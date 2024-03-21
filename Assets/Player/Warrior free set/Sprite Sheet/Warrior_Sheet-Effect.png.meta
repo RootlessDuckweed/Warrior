@@ -895,7 +895,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack2-1
+      name: Warrior_Sheet-Effect_22
       rect:
         serializedVersion: 2
         x: 276
@@ -916,7 +916,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack2-2
+      name: Warrior_Sheet-Effect_23
       rect:
         serializedVersion: 2
         x: 345
@@ -937,7 +937,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack2-3
+      name: Warrior_Sheet-Effect_24
       rect:
         serializedVersion: 2
         x: 0
@@ -958,7 +958,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Attack2-4
+      name: Warrior_Sheet-Effect_25
       rect:
         serializedVersion: 2
         x: 69
@@ -2522,10 +2522,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack2-1: -381468241496348146
-      Attack2-2: -2164224423321271568
-      Attack2-3: 7378919880078719499
-      Attack2-4: -50406204238961237
       Warrior_Sheet-Effect_0: -3318188226485093758
       Warrior_Sheet-Effect_1: -1938354968663525734
       Warrior_Sheet-Effect_10: -7157502479376193569
@@ -2541,6 +2537,10 @@ TextureImporter:
       Warrior_Sheet-Effect_2: -4486162353907066099
       Warrior_Sheet-Effect_20: 4804923502247703499
       Warrior_Sheet-Effect_21: -6253208296904073923
+      Warrior_Sheet-Effect_22: -381468241496348146
+      Warrior_Sheet-Effect_23: -2164224423321271568
+      Warrior_Sheet-Effect_24: 7378919880078719499
+      Warrior_Sheet-Effect_25: -50406204238961237
       Warrior_Sheet-Effect_26: 2833012263988642564
       Warrior_Sheet-Effect_27: 1619122817114066791
       Warrior_Sheet-Effect_28: -3728085103066422436
