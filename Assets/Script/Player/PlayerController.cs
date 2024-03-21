@@ -6,8 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb; //自身的刚体组件
     private PlayerInput input; //输入控制器
-    public Vector2 inputDirtion; //输入人物移动的方向
+    public Vector2 inputDirection; //输入人物移动的方向
     public float moveSpeed;
+    public float currentFace;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        inputDirtion = input.GamePlay.Move.ReadValue<Vector2>();
+        inputDirection = input.GamePlay.Move.ReadValue<Vector2>();
     }
 
     private void FixedUpdate()
@@ -34,6 +35,12 @@ public class PlayerController : MonoBehaviour
 
     public void Move()
     {
-        rb.velocity = new Vector2(moveSpeed * inputDirtion.x, rb.velocity.y);
+        //转向
+        currentFace = transform.localScale.x;
+        if (inputDirection.x > 0) currentFace = 1;
+        if (inputDirection.x < 0) currentFace = -1;
+        transform.localScale = new Vector3(currentFace, transform.localScale.y, transform.localScale.z);
+        //移动
+        rb.velocity = new Vector2(moveSpeed * inputDirection.x* Time.deltaTime, rb.velocity.y);
     }
 }
