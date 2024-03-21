@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class PlayerAnimaton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public PlayerController playerController;
+    public Animator anim;
+    private void Update()
     {
-        
+        SetAnimation();
     }
-
-    // Update is called once per frame
-    void Update()
+    void SetAnimation()
     {
-        
+       
     }
 }
