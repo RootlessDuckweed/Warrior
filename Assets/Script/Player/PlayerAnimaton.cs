@@ -23,4 +23,17 @@ public class PlayerAnimaton : MonoBehaviour
         anim.SetBool("isGround", physicsCheck.isGround);
         anim.SetFloat("velocityY", playerController.rb.velocity.y);
     }
+
+    /// <summary>
+    /// 触发动画状态机的滑动参数
+    /// </summary>
+    public void TriggerSlide()
+    {
+        anim.SetTrigger("slide");
+    }
+
+    public void TriggerAttack()
+    {
+        anim.SetTrigger("attack");
+    }
 }
