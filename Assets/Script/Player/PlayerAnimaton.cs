@@ -10,6 +10,8 @@ public class PlayerAnimaton : MonoBehaviour
     private void Awake()
     {
         physicsCheck = GetComponent<PhysicsCheck>();
+        playerController = GetComponent<PlayerController>();
+        anim = GetComponent<Animator>();
     }
     private void Update()
     {
