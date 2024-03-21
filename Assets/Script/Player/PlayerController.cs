@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,14 +10,19 @@ public class PlayerController : MonoBehaviour
     public Vector2 inputDirection; //输入人物移动的方向
     public float moveSpeed;
     public float currentFace;
+    public float jumpForce;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         input = new PlayerInput();
+        input.GamePlay.Jump.started += Jump;
     }
+
+
     private void OnEnable()
     {
         input.Enable();
+
         
     }
     private void OnDisable()
@@ -33,7 +39,7 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
-    public void Move()
+    private void Move()
     {
         //转向
         currentFace = transform.localScale.x;
@@ -43,4 +49,10 @@ public class PlayerController : MonoBehaviour
         //移动
         rb.velocity = new Vector2(moveSpeed * inputDirection.x* Time.deltaTime, rb.velocity.y);
     }
+
+    private void Jump(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+    }
+
 }

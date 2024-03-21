@@ -1384,6 +1384,7 @@ MonoBehaviour:
   inputDirection: {x: 0, y: 0}
   moveSpeed: 200
   currentFace: 0
+  jumpForce: 12
 --- !u!114 &1162339621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1448,8 +1449,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_GravityScale: 3
+  m_Material: {fileID: 6200000, guid: 0c2e12fbf8ab53241a37498796586569, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
