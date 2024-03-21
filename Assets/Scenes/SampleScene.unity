@@ -1398,6 +1398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 1162339620}
+  physicsCheck: {fileID: 1162339618}
   anim: {fileID: 1162339624}
 --- !u!70 &1162339622
 CapsuleCollider2D:
