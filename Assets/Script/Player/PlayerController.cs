@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 inputDirection; //输入人物移动的方向
     public PlayerAnimaton playerAnimaton; //自身的PlayerAnimation脚本组件
     public PhysicsCheck physicsCheck; //自身物理检测脚本组件
-  
+
+    public float hurtForce;
     public float moveSpeed;
     public float currentFace;
     public float jumpForce;
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public float slideCounter;
     public bool isSlideCold;  //是否在滑铲冷却状态
     public bool isAttack;
+    public bool isHurt;
+    public bool isDead;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -39,13 +42,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        input.Enable();
+        input.GamePlay.Enable();
 
         
     }
     private void OnDisable()
     {
-        input.Disable();
+        input.GamePlay.Disable();
     }
     private void Update()
     {
@@ -55,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(!isHurt)
         Move();
     }
 
@@ -103,6 +107,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   
-    
+    public void GetHurt(Transform attacker)
+    {
+        isHurt = true;
+        rb.velocity = Vector2.zero;
+        Vector2 dir = new Vector2(transform.position.x - attacker.position.x, transform.position.y).normalized;
+        rb.AddForce(dir * hurtForce, ForceMode2D.Impulse);
+        playerAnimaton.TriggerHurt();
+    }
+
+    public void PlayerDead()
+    {
+        isDead = true;
+        input.GamePlay.Disable();
+    }
 }

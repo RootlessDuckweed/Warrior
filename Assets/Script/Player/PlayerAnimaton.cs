@@ -22,6 +22,7 @@ public class PlayerAnimaton : MonoBehaviour
         anim.SetFloat("speed", Mathf.Abs(playerController.rb.velocity.x));
         anim.SetBool("isGround", physicsCheck.isGround);
         anim.SetFloat("velocityY", playerController.rb.velocity.y);
+        anim.SetBool("dead", playerController.isDead);
     }
 
     /// <summary>
@@ -35,5 +36,9 @@ public class PlayerAnimaton : MonoBehaviour
     public void TriggerAttack()
     {
         anim.SetTrigger("attack");
+    }
+    public void TriggerHurt()
+    {
+        anim.SetTrigger("hurt");
     }
 }
