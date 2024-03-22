@@ -24,12 +24,14 @@ public class PatrolState : BaseState
 
     public override void PhysicUpdate()
     {
-        //Bocchi:改变敌人的朝向
         if(currentEnemy.moveable)
         {
-            if (currentEnemy.check.isRightWall)
+            if(currentEnemy.currentFace>0f)
             {
-                currentEnemy.currentFace = -currentEnemy.currentFace;
+                if (currentEnemy.check.isRightWall)
+                {
+                    currentEnemy.currentFace = -currentEnemy.currentFace;
+                }
             }
             else
             {
@@ -39,15 +41,13 @@ public class PatrolState : BaseState
                }
             }
             if (currentEnemy.FoundPlayer()
-                && currentEnemy.InAttackRange()
-                && currentEnemy.attackerTransform != null && !currentEnemy.attackerTransform.GetComponent<PlayerController>().isDead)
+                && Vector2.Distance(currentEnemy.transform.position, currentEnemy.attackerTransform.position) > currentEnemy.stoppingDistance)
             {
                 currentEnemy.SwitchState(State.CHASE);
             }
             Move();
         }
     }
-    //Bocchi:敌人移动
     public void Move()
     {
         currentEnemy.transform.localScale = new Vector3(currentEnemy.currentFace, currentEnemy.transform.localScale.y, currentEnemy.transform.localScale.z);
