@@ -633,6 +633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6156690649282856536}
   - component: {fileID: 8882381285678362864}
+  - component: {fileID: 7153633585606971357}
   m_Layer: 6
   m_Name: DashAttack
   m_TagString: Untagged
@@ -712,3 +713,16 @@ PolygonCollider2D:
       - {x: 1.7966311, y: 2.1199403}
       - {x: 0.8699285, y: 2.3667176}
   m_UseDelaunayMesh: 0
+--- !u!114 &7153633585606971357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557483070726970786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ddeff527c82db46af9d3f3032b4f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
