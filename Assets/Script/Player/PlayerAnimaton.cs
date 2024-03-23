@@ -23,7 +23,6 @@ public class PlayerAnimaton : MonoBehaviour
         anim.SetBool("isGround", physicsCheck.isGround);
         anim.SetFloat("velocityY", playerController.rb.velocity.y);
         anim.SetBool("dead", playerController.isDead);
-        anim.SetBool("dash", playerController.isDash);
     }
 
     /// <summary>
