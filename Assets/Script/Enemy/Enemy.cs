@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     public float chaseSpeed;
     public float attackTime;
     private float attackTimeCounter;
-    public bool isHurt;
+    [HideInInspector]public bool isHurt;
     [HideInInspector]public bool isDead;
     public float hurtForce;
     private BaseState currentState;
@@ -96,14 +96,6 @@ public class Enemy : MonoBehaviour
                }
                //Move();
            }
-          /* else if (!isDead && !isHurt && FoundPlayer() && Vector2.Distance(transform.position,attackerTransform.position)>stoppingDistance)
-           {
-               if(!anim.GetBool("isChase"))
-               {
-                   SwitchState(State.CHASE);
-               }
-               //Chase();
-           }*/
            currentState.PhysicUpdate();
         }
     }
@@ -172,23 +164,11 @@ public class Enemy : MonoBehaviour
         canAttack=true;
     }
 
-    /*    public void Move()
-        {
-            transform.localScale = new Vector3(currentFace,transform.localScale.y,transform.localScale.z);
-            rb.velocity = new Vector2(currentFace*Time.deltaTime*normalSpeed,0);
-        }
-    */
     public bool FoundPlayer()
     {
         //寻找玩家
         return Physics2D.OverlapCircle((Vector2)transform.position + chaseRadiusOffset, chaseRadius, playerLayerMask);
     }
-    /*
-    public void Chase()
-    {
-        return Physics2D.OverlapCircle((Vector2)transform.position + chaseRadiusOffset, stoppingDistance, playerLayerMask);
-    }
-    */
 
     public bool InAttackRange()
     {
@@ -208,9 +188,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void GetHurt()
+    //Bocchi:敌人受伤时进行的行为
+    public void GetHurt(Transform attacker)
     {
         isHurt = true;
+        Vector2 dir = new Vector2(transform.position.x-attacker.position.x,attacker.position.y).normalized;
+        rb.AddForce(new Vector2(hurtForce, 0)* dir);
     }
 
     public void EnemyDead()

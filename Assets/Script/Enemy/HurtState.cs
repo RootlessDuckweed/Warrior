@@ -14,7 +14,6 @@ public class HurtState : BaseState
         currentEnemy = enemy;
         currentEnemy.moveable = false;
         currentEnemy.anim.SetTrigger("Hurt");
-        currentEnemy.rb.AddForce(new Vector2(-currentEnemy.currentFace * currentEnemy.hurtForce, 0));
     }
 
     public override void OnExit()

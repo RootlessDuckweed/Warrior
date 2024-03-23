@@ -24,6 +24,7 @@ public class PatrolState : BaseState
 
     public override void PhysicUpdate()
     {
+        //Bocchi:改变敌人的朝向
         if(currentEnemy.moveable)
         {
             if(currentEnemy.currentFace>0f)
@@ -49,6 +50,7 @@ public class PatrolState : BaseState
             Move();
         }
     }
+    //Bocchi:敌人移动
     public void Move()
     {
         currentEnemy.transform.localScale = new Vector3(currentEnemy.currentFace, currentEnemy.transform.localScale.y, currentEnemy.transform.localScale.z);
