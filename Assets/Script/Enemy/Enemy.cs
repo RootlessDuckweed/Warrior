@@ -178,6 +178,7 @@ public class Enemy : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere((Vector2)transform.position+chaseRadiusOffset,chaseRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position+chaseRadiusOffset,stoppingDistance);
     }
 
     public void DestroyEnemy()

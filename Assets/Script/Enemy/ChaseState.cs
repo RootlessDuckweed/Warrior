@@ -46,13 +46,22 @@ public class ChaseState:BaseState
     //Bocchi:追击敌人逻辑
     public void Chase()
     {
-        if (currentEnemy.attackerTransform.position.x-currentEnemy.transform.position.x>0f)
+        //Bocchi:通过物理检测碰撞体来改变朝向
+        Collider2D facingCollider = Physics2D.OverlapCircle((Vector2)currentEnemy.transform.position + currentEnemy.chaseRadiusOffset, currentEnemy.chaseRadius, currentEnemy.playerLayerMask);
+        Debug.Log(facingCollider.gameObject.name + " " + facingCollider.gameObject.transform.position.x);
+        Debug.Log(currentEnemy.transform.position.x);
+        Debug.Log(facingCollider.gameObject.transform.position.x - currentEnemy.transform.position.x);
+        if (facingCollider != null)
         {
-            currentEnemy.currentFace = 1;
-        }
-        else
-        {
-            currentEnemy.currentFace = -1;
+            if (facingCollider.gameObject.transform.position.x - currentEnemy.transform.position.x > 0f)
+            {
+                currentEnemy.currentFace = 1;
+            }
+            else
+            {
+                currentEnemy.currentFace = -1;
+            }
+
         }
         currentEnemy.transform.localScale = new Vector3(currentEnemy.currentFace, currentEnemy.transform.localScale.y, currentEnemy.transform.localScale.z);
         currentEnemy.rb.velocity = new Vector2(currentEnemy.currentFace * Time.deltaTime * currentEnemy.chaseSpeed, 0);

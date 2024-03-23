@@ -7,10 +7,11 @@ public class AttackState : BaseState
     public override void LogicUpdate()
     {
         //Bocchi:攻击玩家的动画的逻辑
-        if (!currentEnemy.attackerTransform.GetComponent<PlayerController>().isDead)
-        {
-            //Bocchi:攻击时转向
-            if (currentEnemy.attackerTransform.position.x - currentEnemy.transform.position.x > 0f)
+        Collider2D facingCollider = Physics2D.OverlapCircle((Vector2)currentEnemy.transform.position + currentEnemy.chaseRadiusOffset,currentEnemy.stoppingDistance,currentEnemy.playerLayerMask);
+        if (facingCollider != null)
+        {   
+           //Bocchi:攻击时转向
+            if (facingCollider.gameObject.transform.position.x - currentEnemy.transform.position.x > 0f)
             {
                 currentEnemy.currentFace = 1;
             }
@@ -18,16 +19,15 @@ public class AttackState : BaseState
             {
                 currentEnemy.currentFace = -1;
             }
+
             if (currentEnemy.canAttack)
             {
+                //Bocchi:攻击时转向
+                currentEnemy.transform.localScale = new Vector3(currentEnemy.currentFace, currentEnemy.transform.localScale.y, currentEnemy.transform.localScale.z);
                 currentEnemy.anim.SetTrigger("Attack");
                 currentEnemy.canAttack = false;
                 currentEnemy.moveable = false;
-            }            
-        }
-        else
-        {
-            currentEnemy.SwitchState(State.PATROL);
+            }
         }
         //Debug.Log(currentEnemy.canAttack);
     }
