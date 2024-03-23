@@ -33,7 +33,6 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public bool canAttack;     //Bocchi;判断敌人是否处于可攻击状态
     public float chaseRadius;//Bocchi:检测玩家的范围
     public float stoppingDistance;//Bocchi:与玩家的停止移动的距离
-    public float attackExitTime;//Bocchi:玩家退出攻击状态的时间
 
     private void Awake()
     {
@@ -74,11 +73,6 @@ public class Enemy : MonoBehaviour
     {
         if(!isDead)
         {
-            if (character.currentHealth<=0)
-            {
-                isDead = true;
-                SwitchState(State.DEATH);
-            }
             if (isHurt)
             {
                 SwitchState(State.HURT);
@@ -212,5 +206,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    
+    public void GetHurt()
+    {
+        isHurt = true;
+    }
+
+    public void EnemyDead()
+    {
+        isDead = true;
+        SwitchState(State.DEATH);
+    }
 }

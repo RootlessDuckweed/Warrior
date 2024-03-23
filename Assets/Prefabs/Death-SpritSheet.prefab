@@ -226,7 +226,6 @@ MonoBehaviour:
   canAttack: 0
   chaseRadius: 4.7
   stoppingDistance: 1
-  attackExitTime: 0
 --- !u!114 &1364045916434341977
 MonoBehaviour:
   m_ObjectHideFlags: 0

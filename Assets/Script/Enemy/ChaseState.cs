@@ -52,14 +52,22 @@ public class ChaseState:BaseState
     }
     public override void PhysicUpdate()
     {
-        if(currentEnemy.moveable)
+        if (!currentEnemy.attackerTransform.GetComponent<PlayerController>().isDead)
         {
-            Chase();
-            if (Vector2.Distance((Vector2)currentEnemy.transform.position, currentEnemy.attackerTransform.position) <= currentEnemy.stoppingDistance)
+            if(currentEnemy.moveable)
             {
-                currentEnemy.SwitchState(State.ATTACK);
+                Chase();
+                if (Vector2.Distance((Vector2)currentEnemy.transform.position, currentEnemy.attackerTransform.position) <= currentEnemy.stoppingDistance)
+                {
+                    currentEnemy.SwitchState(State.ATTACK);
+                }
             }
         }
+        else
+        {
+            currentEnemy.SwitchState(State.PATROL);
+        }
+
     }
     //Bocchi:×·»÷µÐÈËÂß¼­
     public void Chase()

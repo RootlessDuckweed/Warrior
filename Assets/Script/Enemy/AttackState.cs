@@ -6,11 +6,18 @@ public class AttackState : BaseState
 {
     public override void LogicUpdate()
     {
-        if (currentEnemy.canAttack)
+        if(!currentEnemy.attackerTransform.GetComponent<PlayerController>().isDead)
         {
-            currentEnemy.anim.SetTrigger("Attack");
-            currentEnemy.canAttack = false;
-            currentEnemy.moveable = false;
+            if (currentEnemy.canAttack)
+            {
+                currentEnemy.anim.SetTrigger("Attack");
+                currentEnemy.canAttack = false;
+                currentEnemy.moveable = false;
+            }            
+        }
+        else
+        {
+            currentEnemy.SwitchState(State.PATROL);
         }
         currentEnemy.AttackTimeCounter();
         Debug.Log(currentEnemy.canAttack);
