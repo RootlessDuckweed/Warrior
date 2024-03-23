@@ -19,10 +19,10 @@ public class Enemy : MonoBehaviour
     private BaseState currentState;
     protected BaseState patrolState;
     protected BaseState chaseState;
-    [HideInInspector]public bool moveable;       //Bocchi:ÅÐ¶ÏµÐÈËÊÇ·ñ´¦ÓÚ¿ÉÒÆ¶¯×´Ì¬
-    [HideInInspector] public bool canAttack;     //Bocchi;ÅÐ¶ÏµÐÈËÊÇ·ñ´¦ÓÚ¿É¹¥»÷×´Ì¬
-    public float chaseRadius;//Bocchi:¼ì²âÍæ¼ÒµÄ·¶Î§
-    public float stoppingDistance;//Bocchi:ÓëÍæ¼ÒµÄÍ£Ö¹ÒÆ¶¯µÄ¾àÀë
+    [HideInInspector]public bool moveable;       //Bocchi:ï¿½Ð¶Ïµï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ú¿ï¿½ï¿½Æ¶ï¿½×´Ì¬
+    [HideInInspector] public bool canAttack;     //Bocchi;ï¿½Ð¶Ïµï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ú¿É¹ï¿½ï¿½ï¿½×´Ì¬
+    public float chaseRadius;//Bocchi:ï¿½ï¿½ï¿½ï¿½ï¿½ÒµÄ·ï¿½Î§
+    public float stoppingDistance;//Bocchi:ï¿½ï¿½ï¿½ï¿½Òµï¿½Í£Ö¹ï¿½Æ¶ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
     {   
         if(!isDead && !isHurt)
         {
-        //Bocchi:µ±µÐÈËÃ»ÓÐËÀÍö»òÕßÃ»ÊÜÉËÊ±µ÷ÓÃÒÆ¶¯º¯Êý
+        //Bocchi:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½
            if (!FoundPlayer() && moveable)
            {
                if (!anim.GetBool("isWalk"))
@@ -72,15 +72,7 @@ public class Enemy : MonoBehaviour
                }
                Move();
            }
-           else if (!isDead && !isHurt && FoundPlayer() && Vector2.Distance(transform.position,attackerTransform.position)>stoppingDistance && moveable)
-           {
-               if(!anim.GetBool("isChase"))
-               {
-                   SwitchState(State.CHASE);
-               }
-               Chase();
-           }
-            currentState.PhysicUpdate();
+           currentState.PhysicUpdate();
         }
     }
 
@@ -106,7 +98,7 @@ public class Enemy : MonoBehaviour
     }
 
     /// <summary>
-    ///Bocchi:×¨ÃÅ¼ÆËã¹¥»÷µÄÀäÈ´
+    ///Bocchi:×¨ï¿½Å¼ï¿½ï¿½ã¹¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È´
     /// </summary>
     public void AttackTimeCounter()
     {
@@ -139,23 +131,36 @@ public class Enemy : MonoBehaviour
         }
         return false;
     }
-    public void Chase()
+
+    public bool InAttackRange()
     {
-        if (Vector2.Distance((Vector2)check.transform.position + check.checkPointOffset_RightWall, (Vector2)attackerTransform.position)
-            < Vector2.Distance((Vector2)check.transform.position + check.checkPointOffset_LeftWall, (Vector2)attackerTransform.position))
-        {
-            currentFace = 1;
-        }
-        else
-        {
-            currentFace = -1;
-        }
-        transform.localScale = new Vector3(currentFace, transform.localScale.y, transform.localScale.z);
-        rb.velocity = new Vector2(currentFace * Time.deltaTime * chaseSpeed, 0);
+        return Physics2D.OverlapCircle((Vector2)transform.position + chaseRadiusOffset, stoppingDistance, playerLayerMask);
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere((Vector2)transform.position,chaseRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position+chaseRadiusOffset,chaseRadius);
+    }
+
+    public void DestroyEnemy()
+    {
+        if(!gameObject.IsDestroyed())
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    //Bocchi:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Îª
+    public void GetHurt(Transform attacker)
+    {
+        isHurt = true;
+        Vector2 dir = new Vector2(transform.position.x-attacker.position.x,attacker.position.y).normalized;
+        rb.AddForce(new Vector2(hurtForce, 0)* dir);
+    }
+
+    public void EnemyDead()
+    {
+        isDead = true;
+        SwitchState(State.DEATH);
     }
 }

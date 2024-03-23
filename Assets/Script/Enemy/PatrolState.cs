@@ -24,20 +24,19 @@ public class PatrolState : BaseState
 
     public override void PhysicUpdate()
     {
-        if(currentEnemy.currentFace>0f)
+        //Bocchi:改变敌人的朝向
+        if(currentEnemy.moveable)
         {
             if (currentEnemy.check.isRightWall)
             {
                 currentEnemy.currentFace = -currentEnemy.currentFace;
             }
         }
-        else
-        {
-           if (currentEnemy.check.isLeftWall)
-           {
-               currentEnemy.currentFace = -currentEnemy.currentFace;
-           }
-        }
-        
+    }
+    //Bocchi:敌人移动
+    public void Move()
+    {
+        currentEnemy.transform.localScale = new Vector3(currentEnemy.currentFace, currentEnemy.transform.localScale.y, currentEnemy.transform.localScale.z);
+        currentEnemy.rb.velocity = new Vector2(currentEnemy.currentFace * Time.deltaTime * currentEnemy.normalSpeed, 0);
     }
 }
