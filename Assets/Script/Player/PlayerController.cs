@@ -16,12 +16,17 @@ public class PlayerController : MonoBehaviour
     public float currentFace;
     public float jumpForce;
     public float slideForce;
+    public float dashForce;
     public float slideTimeDuration;
     public float slideCounter;
     public bool isSlideCold;  //ÊÇ·ñÔÚ»¬²ùÀäÈ´×´Ì¬
+    public float dashTimeDuration;
+    public float dashTimeCounter;
+    public bool isDashCold;
     public bool isAttack;
     public bool isHurt;
     public bool isDead;
+    public bool isDash;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,6 +37,17 @@ public class PlayerController : MonoBehaviour
         input.GamePlay.Jump.started += Jump;
         input.GamePlay.Slide.performed += Slide;
         input.GamePlay.Attack.started += PlayerAttack;
+        input.GamePlay.Dash.performed += PlayerDash;
+    }
+
+    private void PlayerDash(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        if (isDashCold) return;
+        isDash = true;
+        rb.AddForce(Vector2.right*dashForce*currentFace,ForceMode2D.Impulse);
+        isDashCold = true;
+        dashTimeCounter = dashTimeDuration;
+        
     }
 
     private void PlayerAttack(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -53,12 +69,13 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         SlideTimeCounter();
+        DashTimeCounter();
         inputDirection = input.GamePlay.Move.ReadValue<Vector2>();
     }
 
     private void FixedUpdate()
     {
-        if(!isHurt)
+        if(!isHurt&&!isDash)
         Move();
     }
 
@@ -95,6 +112,7 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+    //»¬²ùÀäÈ´¼ÆÊ±
     void SlideTimeCounter()
     {
         if (!isSlideCold) return;
@@ -103,6 +121,19 @@ public class PlayerController : MonoBehaviour
             slideCounter -= Time.deltaTime;
             if(slideCounter <= 0f){
                 isSlideCold = false;
+            }
+        }
+    }
+
+    void DashTimeCounter()
+    {
+        if (!isDashCold) return;
+        else
+        {
+            dashTimeCounter -= Time.deltaTime;
+            if (dashTimeCounter <= 0f)
+            {
+                isDashCold = false;
             }
         }
     }
@@ -120,5 +151,7 @@ public class PlayerController : MonoBehaviour
     {
         isDead = true;
         input.GamePlay.Disable();
+        gameObject.tag = "Untagged";
+        gameObject.layer = 8;
     }
 }
