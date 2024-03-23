@@ -167,9 +167,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void GetHurt()
+    //Bocchi:敌人受伤时进行的行为
+    public void GetHurt(Transform attacker)
     {
         isHurt = true;
+        Vector2 dir = new Vector2(transform.position.x-attacker.position.x,attacker.position.y).normalized;
+        rb.AddForce(new Vector2(hurtForce, 0)* dir);
     }
 
     public void EnemyDead()
