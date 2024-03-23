@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
@@ -78,8 +79,8 @@ public class Enemy : MonoBehaviour
                 SwitchState(State.HURT);
             }
             currentState.LogicUpdate();
+            AttackTimeCounter();
         }
-
     }
 
     private void FixedUpdate()
@@ -179,11 +180,8 @@ public class Enemy : MonoBehaviour
     */
     public bool FoundPlayer()
     {
-        if (Vector2.Distance((Vector2)transform.position+chaseRadiusOffset, attackerTransform.position) < chaseRadius)
-        {
-            return true;
-        }
-        return false;
+        //Ñ°ÕÒÍæ¼Ò
+        return Physics2D.OverlapCircle((Vector2)transform.position + chaseRadiusOffset, chaseRadius, playerLayerMask);
     }
     /*
     public void Chase()
@@ -192,6 +190,10 @@ public class Enemy : MonoBehaviour
     }
     */
 
+    public bool InAttackRange()
+    {
+        return Physics2D.OverlapCircle((Vector2)transform.position + chaseRadiusOffset, stoppingDistance, playerLayerMask);
+    }
 
     private void OnDrawGizmosSelected()
     {
