@@ -8,29 +8,6 @@ public class ChaseState:BaseState
 
     public override void LogicUpdate()
     {
-        //Bocchi:攻击玩家的动画的逻辑
-        if(Vector2.Distance(currentEnemy.transform.position, currentEnemy.attackerTransform.position) <= currentEnemy.stoppingDistance)
-        {
-            currentEnemy.moveable = false;
-            currentEnemy.rb.velocity = Vector2.zero;
-            if (currentEnemy.canAttack)
-            {
-                currentEnemy.anim.SetTrigger("Attack");
-                currentEnemy.canAttack = false;
-            }
-            else
-            {
-                currentEnemy.anim.ResetTrigger("Attack");
-            }
-            Debug.Log(currentEnemy.canAttack);
-        }
-        else if(Vector2.Distance(currentEnemy.transform.position, currentEnemy.attackerTransform.position) > currentEnemy.stoppingDistance
-            &&currentEnemy.anim.GetCurrentAnimatorStateInfo(0).normalizedTime>=1f)
-
-        {
-            currentEnemy.moveable = true;
-        }
-        currentEnemy.AttackTimeCounter();
     }
 
     public override void OnEnter(Enemy enemy)
@@ -51,7 +28,7 @@ public class ChaseState:BaseState
             if(currentEnemy.moveable)
             {
                 Chase();
-                if (Vector2.Distance((Vector2)currentEnemy.transform.position, currentEnemy.attackerTransform.position) <= currentEnemy.stoppingDistance)
+                if (currentEnemy.InAttackRange())
                 {
                     currentEnemy.SwitchState(State.ATTACK);
                 }

@@ -6,8 +6,18 @@ public class AttackState : BaseState
 {
     public override void LogicUpdate()
     {
-        if(!currentEnemy.attackerTransform.GetComponent<PlayerController>().isDead)
+        //Bocchi:攻击玩家的动画的逻辑
+        if (!currentEnemy.attackerTransform.GetComponent<PlayerController>().isDead)
         {
+            //Bocchi:攻击时转向
+            if (currentEnemy.attackerTransform.position.x - currentEnemy.transform.position.x > 0f)
+            {
+                currentEnemy.currentFace = 1;
+            }
+            else
+            {
+                currentEnemy.currentFace = -1;
+            }
             if (currentEnemy.canAttack)
             {
                 currentEnemy.anim.SetTrigger("Attack");
@@ -19,8 +29,7 @@ public class AttackState : BaseState
         {
             currentEnemy.SwitchState(State.PATROL);
         }
-        currentEnemy.AttackTimeCounter();
-        Debug.Log(currentEnemy.canAttack);
+        //Debug.Log(currentEnemy.canAttack);
     }
 
     public override void OnEnter(Enemy enemy)
@@ -31,15 +40,14 @@ public class AttackState : BaseState
 
     public override void OnExit()
     {
-        currentEnemy.ResetAttackTimeCounter();
-        currentEnemy.anim.ResetTrigger("Attack");
+        //currentEnemy.anim.ResetTrigger("Attack");
     }
 
     public override void PhysicUpdate()
     {
         currentEnemy.rb.velocity = Vector2.zero;
         if (!currentEnemy.isDead && !currentEnemy.isHurt && currentEnemy.FoundPlayer() 
-            && Vector2.Distance((Vector2)currentEnemy.transform.position, currentEnemy.attackerTransform.position) > currentEnemy.stoppingDistance)
+            && !currentEnemy.InAttackRange())
         {
             currentEnemy.SwitchState(State.CHASE);
         }

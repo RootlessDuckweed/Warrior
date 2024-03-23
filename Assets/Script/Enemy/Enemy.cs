@@ -1,5 +1,10 @@
+using JetBrains.Annotations;
+using System;
+using Unity.VisualScripting;
+using UnityEditor.Tilemaps;
 using UnityEditor.XR;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -9,6 +14,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]public PhysicsCheck check;
     [HideInInspector]public Transform attackerTransform;
     [HideInInspector]public float currentFace;
+    public LayerMask playerLayerMask;   //¼ì²âÍæ¼ÒµÄ²ã¼¶
     public float normalSpeed;
     public float chaseSpeed;
     public float attackTime;
@@ -42,6 +48,7 @@ public class Enemy : MonoBehaviour
         character = GetComponent<Character>();
         check = GetComponent<PhysicsCheck>();
         currentFace = transform.localScale.x;
+        attackTimeCounter = attackTime;
         isHurt = false;
         isDead = false;
         moveable = true;
@@ -68,8 +75,8 @@ public class Enemy : MonoBehaviour
                 SwitchState(State.HURT);
             }
             currentState.LogicUpdate();
+            AttackTimeCounter();
         }
-
     }
 
     private void FixedUpdate()
@@ -138,11 +145,8 @@ public class Enemy : MonoBehaviour
 
     public bool FoundPlayer()
     {
-        if (Vector3.Distance(transform.position, attackerTransform.position) < chaseRadius)
-        {
-            return true;
-        }
-        return false;
+        //Ñ°ÕÒÍæ¼Ò
+        return Physics2D.OverlapCircle((Vector2)transform.position + chaseRadiusOffset, chaseRadius, playerLayerMask);
     }
 
     public bool InAttackRange()

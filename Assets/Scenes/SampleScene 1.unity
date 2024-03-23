@@ -1130,7 +1130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ddeff527c82db46af9d3f3032b4f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 5
 --- !u!1001 &499534866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1406,8 +1406,20 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2955397453966282311, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
+      propertyPath: isHurt
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955397453966282311, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
+      propertyPath: attackTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955397453966282311, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
       propertyPath: stoppingDistance
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955397453966282311, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
+      propertyPath: playerLayerMask.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 3680113931176312721, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
       propertyPath: m_SleepingMode
