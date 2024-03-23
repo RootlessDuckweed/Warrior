@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Dash",
+                    "name": "Slide",
                     "type": "Button",
                     "id": "8640fd8c-930b-4f35-abca-36c967a18fdc",
                     "expectedControlType": "Button",
@@ -36,15 +36,6 @@
                     "name": "Attack",
                     "type": "Button",
                     "id": "a05c1516-cfb8-4898-905c-5f1081e4b409",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Slide",
-                    "type": "Button",
-                    "id": "03230719-ac49-40c3-9fb5-b2a5e9cc9487",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -199,10 +190,10 @@
                     "name": "",
                     "id": "e960140c-58f8-45e2-961f-d58776e490bc",
                     "path": "<Keyboard>/a",
-                    "interactions": "MultiTap",
+                    "interactions": "MultiTap(tapTime=0.5)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Dash",
+                    "action": "Slide",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -213,7 +204,7 @@
                     "interactions": "MultiTap",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Dash",
+                    "action": "Slide",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -225,17 +216,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5eef747f-4115-4b1b-a2df-cd2faaff6526",
-                    "path": "<Keyboard>/l",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Slide",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
