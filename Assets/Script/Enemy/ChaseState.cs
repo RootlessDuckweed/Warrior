@@ -48,9 +48,6 @@ public class ChaseState:BaseState
     {
         //Bocchi:通过物理检测碰撞体来改变朝向
         Collider2D facingCollider = Physics2D.OverlapCircle((Vector2)currentEnemy.transform.position + currentEnemy.chaseRadiusOffset, currentEnemy.chaseRadius, currentEnemy.playerLayerMask);
-        Debug.Log(facingCollider.gameObject.name + " " + facingCollider.gameObject.transform.position.x);
-        Debug.Log(currentEnemy.transform.position.x);
-        Debug.Log(facingCollider.gameObject.transform.position.x - currentEnemy.transform.position.x);
         if (facingCollider != null)
         {
             if (facingCollider.gameObject.transform.position.x - currentEnemy.transform.position.x > 0f)
