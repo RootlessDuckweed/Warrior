@@ -72,9 +72,7 @@ public class ChaseState:BaseState
     //Bocchi:×·»÷µÐÈËÂß¼­
     public void Chase()
     {
-        if (Vector2.Distance((Vector2)currentEnemy.check.transform.position + currentEnemy.check.checkPointOffset_RightWall, (Vector2)currentEnemy.attackerTransform.position)
-            < Vector2.Distance((Vector2)currentEnemy.check.transform.position + currentEnemy.check.checkPointOffset_LeftWall, (Vector2)currentEnemy.attackerTransform.position)
-            &&currentEnemy.moveable)
+        if (currentEnemy.attackerTransform.position.x-currentEnemy.transform.position.x>0f)
         {
             currentEnemy.currentFace = 1;
         }

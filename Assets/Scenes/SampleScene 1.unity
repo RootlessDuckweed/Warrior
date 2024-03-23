@@ -1090,9 +1090,9 @@ PolygonCollider2D:
       - {x: 2.374752, y: 3.3310933}
       - {x: 3.2477784, y: 2.8014808}
       - {x: 3.04526, y: 1.7608976}
-      - {x: 3.1203365, y: 0.9941337}
-      - {x: 3.4552083, y: 0.6656823}
-      - {x: 3.7500377, y: 1.0640025}
+      - {x: 1.7025874, y: 0.9181831}
+      - {x: 2.986845, y: 0.285928}
+      - {x: 3.5348434, y: 0.25386}
       - {x: 4.147379, y: 0.4119208}
       - {x: 4.276155, y: 0.10730052}
       - {x: 4.4755707, y: 0.14821076}
@@ -1145,6 +1145,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1733172643648522288, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832729260922890713, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6390215931871514509, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
@@ -1403,7 +1407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2955397453966282311, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
       propertyPath: stoppingDistance
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3680113931176312721, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
       propertyPath: m_SleepingMode
