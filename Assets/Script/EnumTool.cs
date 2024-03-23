@@ -2,5 +2,8 @@
 public enum State
 {
     PATROL,
-    CHASE
+    CHASE,
+    ATTACK,
+    DEATH,
+    HURT
 }
