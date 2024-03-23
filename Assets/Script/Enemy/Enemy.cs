@@ -19,10 +19,15 @@ public class Enemy : MonoBehaviour
     private BaseState currentState;
     protected BaseState patrolState;
     protected BaseState chaseState;
-    [HideInInspector]public bool moveable;       //Bocchi:ï¿½Ð¶Ïµï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ú¿ï¿½ï¿½Æ¶ï¿½×´Ì¬
-    [HideInInspector] public bool canAttack;     //Bocchi;ï¿½Ð¶Ïµï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ú¿É¹ï¿½ï¿½ï¿½×´Ì¬
-    public float chaseRadius;//Bocchi:ï¿½ï¿½ï¿½ï¿½ï¿½ÒµÄ·ï¿½Î§
-    public float stoppingDistance;//Bocchi:ï¿½ï¿½ï¿½ï¿½Òµï¿½Í£Ö¹ï¿½Æ¶ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½
+    protected BaseState attackState; //Bocchi:Ìí¼ÓµÐÈË¹¥»÷×´Ì¬
+    protected BaseState hurtState;//Bocchi:Ìí¼ÓµÐÈËÊÜÉË×´Ì¬
+    protected BaseState deathState;//Bocchi:Ìí¼ÓµÐÈËËÀÍö×´Ì¬
+    public Vector2 chaseRadiusOffset;//Bocchi:×·»÷·¶Î§Æ«ÒÆÁ¿
+    [HideInInspector]public bool moveable;       //Bocchi:ÅÐ¶ÏµÐÈËÊÇ·ñ´¦ÓÚ¿ÉÒÆ¶¯×´Ì¬
+    [HideInInspector] public bool canAttack;     //Bocchi;ÅÐ¶ÏµÐÈËÊÇ·ñ´¦ÓÚ¿É¹¥»÷×´Ì¬
+    public float chaseRadius;//Bocchi:¼ì²âÍæ¼ÒµÄ·¶Î§
+    public float stoppingDistance;//Bocchi:ÓëÍæ¼ÒµÄÍ£Ö¹ÒÆ¶¯µÄ¾àÀë
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -56,7 +61,15 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentState.LogicUpdate();
+        if(!isDead)
+        {
+            if (isHurt)
+            {
+                SwitchState(State.HURT);
+            }
+            currentState.LogicUpdate();
+        }
+
     }
 
     private void FixedUpdate()
@@ -150,12 +163,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    //Bocchi:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Îª
-    public void GetHurt(Transform attacker)
+    public void GetHurt()
     {
         isHurt = true;
-        Vector2 dir = new Vector2(transform.position.x-attacker.position.x,attacker.position.y).normalized;
-        rb.AddForce(new Vector2(hurtForce, 0)* dir);
     }
 
     public void EnemyDead()

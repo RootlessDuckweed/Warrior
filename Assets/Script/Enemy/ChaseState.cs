@@ -46,6 +46,37 @@ public class ChaseState:BaseState
 
     public override void PhysicUpdate()
     {
-        
+        if (!currentEnemy.attackerTransform.GetComponent<PlayerController>().isDead)
+        {
+            if(currentEnemy.moveable)
+            {
+                Chase();
+                if (Vector2.Distance((Vector2)currentEnemy.transform.position, currentEnemy.attackerTransform.position) <= currentEnemy.stoppingDistance)
+                {
+                    currentEnemy.SwitchState(State.ATTACK);
+                }
+            }
+        }
+        else
+        {
+            currentEnemy.SwitchState(State.PATROL);
+        }
+
+    }
+    //Bocchi:×·»÷µÐÈËÂß¼­
+    public void Chase()
+    {
+        if (Vector2.Distance((Vector2)currentEnemy.check.transform.position + currentEnemy.check.checkPointOffset_RightWall, (Vector2)currentEnemy.attackerTransform.position)
+            < Vector2.Distance((Vector2)currentEnemy.check.transform.position + currentEnemy.check.checkPointOffset_LeftWall, (Vector2)currentEnemy.attackerTransform.position)
+            &&currentEnemy.moveable)
+        {
+            currentEnemy.currentFace = 1;
+        }
+        else
+        {
+            currentEnemy.currentFace = -1;
+        }
+        currentEnemy.transform.localScale = new Vector3(currentEnemy.currentFace, currentEnemy.transform.localScale.y, currentEnemy.transform.localScale.z);
+        currentEnemy.rb.velocity = new Vector2(currentEnemy.currentFace * Time.deltaTime * currentEnemy.chaseSpeed, 0);
     }
 }

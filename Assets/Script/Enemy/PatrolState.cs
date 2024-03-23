@@ -31,6 +31,20 @@ public class PatrolState : BaseState
             {
                 currentEnemy.currentFace = -currentEnemy.currentFace;
             }
+            else
+            {
+               if (currentEnemy.check.isLeftWall)
+               {
+                   currentEnemy.currentFace = -currentEnemy.currentFace;
+               }
+            }
+            if (currentEnemy.FoundPlayer()
+                && Vector2.Distance(currentEnemy.transform.position, currentEnemy.attackerTransform.position) > currentEnemy.stoppingDistance
+                && currentEnemy.attackerTransform != null && !currentEnemy.attackerTransform.GetComponent<PlayerController>().isDead)
+            {
+                currentEnemy.SwitchState(State.CHASE);
+            }
+            Move();
         }
     }
     //Bocchi:µ–»À“∆∂Ø
