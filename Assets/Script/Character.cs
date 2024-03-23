@@ -15,11 +15,6 @@ public class Character : MonoBehaviour
     public UnityEvent<Transform> OnTakenDamage; // 受伤时候 通知订阅者
     public UnityEvent OnDead; // 死亡的时候通知订阅者
 
-    //RootlessDuckweed:修改角色创建时 自动赋值血量
-    private void Start()
-    {
-        currentHealth = maxHealth;
-    }
     private void Update()
     {
         //如果触发无敌时间，那么就计时无敌的时间 
