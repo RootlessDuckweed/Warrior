@@ -1,8 +1,10 @@
 using Cainos.PixelArtPlatformer_VillageProps;
+using System.Runtime.InteropServices;
 using System.Transactions;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class ChaseState:BaseState
@@ -89,7 +91,15 @@ public class ChaseState:BaseState
                 //Bocchi:¹¥»÷Ê±×ªÏò
                 currentEnemy.transform.localScale = new Vector3(currentEnemy.currentFace, currentEnemy.transform.localScale.y,
                                                                 currentEnemy.transform.localScale.z);
-                currentEnemy.anim.SetTrigger("Attack");
+                float takeSkillRate = Random.Range(0f,1f);
+                if(takeSkillRate > currentEnemy.skillRate)
+                {
+                    currentEnemy.anim.SetTrigger("Attack");
+                }
+                else
+                {
+                    Skill(facingCollider);
+                }
                 currentEnemy.canAttack = false;
 
             }
@@ -98,6 +108,17 @@ public class ChaseState:BaseState
         {
             currentEnemy.anim.SetBool("isChase", true);
             currentEnemy.moveable = true;
+        }
+    }
+
+    protected void Skill(Collider2D player)
+    {
+        GameObject skill =currentEnemy.transform.Find("Skill").gameObject;
+        if(skill != null)
+        {
+            currentEnemy.anim.SetTrigger("Skill");
+            skill.SetActive(true);
+            skill.transform.position=new Vector2(player.transform.position.x,currentEnemy.transform.position.y);
         }
     }
 }
