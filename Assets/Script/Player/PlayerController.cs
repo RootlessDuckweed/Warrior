@@ -152,6 +152,7 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         input.GamePlay.Disable();
         gameObject.tag = "Untagged";
-        gameObject.layer = 8;
+        gameObject.layer = 3;
+        rb.mass = 100f;
     }
 }
