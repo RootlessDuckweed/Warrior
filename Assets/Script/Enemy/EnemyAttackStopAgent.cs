@@ -20,6 +20,7 @@ public class EnemyAttackStopAgent : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.gameObject.GetComponent<Enemy>().moveable = true;
+        animator.SetBool("isChase",true);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

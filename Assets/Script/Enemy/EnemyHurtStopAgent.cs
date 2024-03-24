@@ -19,7 +19,9 @@ public class EnemyHurtStopAgent : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.gameObject.GetComponent<Enemy>().SwitchState(State.PATROL);
+        animator.gameObject.GetComponent<Enemy>().moveable = true;
+        animator.gameObject.GetComponent<Enemy>().isHurt = false;
+        animator.gameObject.GetComponent<Enemy>().rb.velocity = Vector2.zero;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

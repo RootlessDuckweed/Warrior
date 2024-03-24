@@ -15,6 +15,7 @@ public class PatrolState : BaseState
     {
         currentEnemy = enemy;
         currentEnemy.anim.SetBool("isWalk",true);
+        currentEnemy.moveable = true;
     }
 
     public override void OnExit()
@@ -41,9 +42,7 @@ public class PatrolState : BaseState
                    currentEnemy.currentFace = -currentEnemy.currentFace;
                }
             }
-            if (currentEnemy.FoundPlayer()
-                && currentEnemy.InAttackRange()
-                && currentEnemy.attackerTransform != null && !currentEnemy.attackerTransform.GetComponent<PlayerController>().isDead)
+            if (currentEnemy.FoundPlayer())
             {
                 currentEnemy.SwitchState(State.CHASE);
             }

@@ -40,9 +40,6 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         patrolState = new PatrolState();
         chaseState = new ChaseState();
-        attackState = new AttackState();
-        deathState = new DeathState();
-        hurtState = new HurtState();
     }
     // Start is called before the first frame update
     void Start()
@@ -74,10 +71,6 @@ public class Enemy : MonoBehaviour
     {
         if(!isDead)
         {
-            if (isHurt)
-            {
-                SwitchState(State.HURT);
-            }
             currentState.LogicUpdate();
             AttackTimeCounter();
         }
@@ -90,11 +83,10 @@ public class Enemy : MonoBehaviour
         //Bocchi:当敌人没有死亡或者没受伤时调用移动函数
            if (!FoundPlayer())
            {
-               if (!anim.GetBool("isWalk"))
+               if (currentState==patrolState)
                {
                    SwitchState(State.PATROL);
                }
-               //Move();
            }
            currentState.PhysicUpdate();
         }
@@ -114,21 +106,6 @@ public class Enemy : MonoBehaviour
             case State.CHASE:
                 currentState.OnExit();
                 currentState = chaseState;
-                currentState.OnEnter(this);
-                break;
-            case State.ATTACK:
-                currentState.OnExit();
-                currentState = attackState;
-                currentState.OnEnter(this);
-                break;
-            case State.DEATH:
-                currentState.OnExit();
-                currentState = deathState;
-                currentState.OnEnter(this);
-                break;
-            case State.HURT:
-                currentState.OnExit();
-                currentState = hurtState;
                 currentState.OnEnter(this);
                 break;
             default: 
@@ -193,13 +170,16 @@ public class Enemy : MonoBehaviour
     public void GetHurt(Transform attacker)
     {
         isHurt = true;
+        moveable = false;
         Vector2 dir = new Vector2(transform.position.x-attacker.position.x,attacker.position.y).normalized;
         rb.AddForce(new Vector2(hurtForce, 0)* dir);
+        anim.SetTrigger("Hurt");
     }
 
     public void EnemyDead()
     {
         isDead = true;
-        SwitchState(State.DEATH);
+        moveable = false;
+        anim.SetTrigger("Death");
     }
 }
