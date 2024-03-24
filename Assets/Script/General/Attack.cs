@@ -15,6 +15,7 @@ public class Attack : MonoBehaviour
     public float critTimeScale;
     [Header("暴击暴击时间变慢的时长")]
     public float critDuration;
+    public bool isCritical; //是否暴击
     /// <summary>
     /// 进入我们的攻击单位 比如剑 的碰撞体范围就通知对方执行扣血操作
     /// </summary>
@@ -25,10 +26,11 @@ public class Attack : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.GetComponent<Character>()) return;
+        if (!other.GetComponent<Character>()||criticalRate == 0f) return;
         float randomRate = Random.value;
         if (randomRate < criticalRate || randomRate >= 1f)
         {
+            isCritical = true;
             PerformCriticalAttack();
             extraDamage = damage * criticalAddtionScale;
         }

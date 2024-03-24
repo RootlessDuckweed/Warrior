@@ -1275,6 +1275,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3223563747956555820, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: criticalRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3223563747956555820, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: critTimeScale
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091758885764191616, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: critDuration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091758885764191616, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: criticalRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091758885764191616, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: critTimeScale
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 6390215931871514509, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.302
@@ -1314,6 +1334,14 @@ PrefabInstance:
     - target: {fileID: 6390215931871514509, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153633585606971357, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: criticalRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153633585606971357, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: critTimeScale
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1556,7 +1584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4326056684637801489, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5279181187309523871, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
