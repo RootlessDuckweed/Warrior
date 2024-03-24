@@ -71,6 +71,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Confirm"",
+                    ""type"": ""Button"",
+                    ""id"": ""7f2cca1c-495a-48b1-9070-cfbe5651a187"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -258,6 +267,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Slide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a77bc3b-eba0-410d-8482-3727e4eb35f8"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -850,6 +870,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_GamePlay_Dash = m_GamePlay.FindAction("Dash", throwIfNotFound: true);
         m_GamePlay_Attack = m_GamePlay.FindAction("Attack", throwIfNotFound: true);
         m_GamePlay_Slide = m_GamePlay.FindAction("Slide", throwIfNotFound: true);
+        m_GamePlay_Confirm = m_GamePlay.FindAction("Confirm", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -928,6 +949,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Dash;
     private readonly InputAction m_GamePlay_Attack;
     private readonly InputAction m_GamePlay_Slide;
+    private readonly InputAction m_GamePlay_Confirm;
     public struct GamePlayActions
     {
         private @PlayerInput m_Wrapper;
@@ -937,6 +959,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_GamePlay_Dash;
         public InputAction @Attack => m_Wrapper.m_GamePlay_Attack;
         public InputAction @Slide => m_Wrapper.m_GamePlay_Slide;
+        public InputAction @Confirm => m_Wrapper.m_GamePlay_Confirm;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -961,6 +984,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Slide.started += instance.OnSlide;
             @Slide.performed += instance.OnSlide;
             @Slide.canceled += instance.OnSlide;
+            @Confirm.started += instance.OnConfirm;
+            @Confirm.performed += instance.OnConfirm;
+            @Confirm.canceled += instance.OnConfirm;
         }
 
         private void UnregisterCallbacks(IGamePlayActions instance)
@@ -980,6 +1006,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Slide.started -= instance.OnSlide;
             @Slide.performed -= instance.OnSlide;
             @Slide.canceled -= instance.OnSlide;
+            @Confirm.started -= instance.OnConfirm;
+            @Confirm.performed -= instance.OnConfirm;
+            @Confirm.canceled -= instance.OnConfirm;
         }
 
         public void RemoveCallbacks(IGamePlayActions instance)
@@ -1167,6 +1196,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
+        void OnConfirm(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

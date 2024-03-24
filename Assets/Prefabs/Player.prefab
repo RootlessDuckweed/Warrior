@@ -444,6 +444,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  extraDamage: 0
+  criticalAddtionScale: 1.5
+  criticalRate: 1
+  critTimeScale: 0.3
+  critDuration: 0.2
 --- !u!1 &1664168007364437023
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +551,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  extraDamage: 0
+  criticalAddtionScale: 1.5
+  criticalRate: 1
+  critTimeScale: 0.3
+  critDuration: 0.2
 --- !u!1 &6410541058115908511
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,3 +736,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  extraDamage: 0
+  criticalAddtionScale: 2
+  criticalRate: 1
+  critTimeScale: 0.3
+  critDuration: 0.2

@@ -45,9 +45,9 @@ public class Character : MonoBehaviour
         {
             return;
         }
-        if (currentHealth - attacker.damage > 0f)
+        if (currentHealth - (attacker.damage + attacker.extraDamage)> 0f)
         {
-            currentHealth -= attacker.damage;
+            currentHealth -= (attacker.damage+attacker.extraDamage);
             TriggerInvulnerable();
             //执行受伤
             OnTakenDamage?.Invoke(attacker.transform); //通知订阅者，受伤了
