@@ -15,6 +15,7 @@ public class PatrolState : BaseState
     {
         currentEnemy = enemy;
         currentEnemy.anim.SetBool("isWalk",true);
+        currentEnemy.anim.SetBool("isChase", false);
         currentEnemy.moveable = true;
     }
 

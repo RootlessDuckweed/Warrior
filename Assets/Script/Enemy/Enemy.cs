@@ -34,6 +34,8 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public bool canAttack;     //Bocchi;判断敌人是否处于可攻击状态
     public float chaseRadius;//Bocchi:检测玩家的范围
     public float stoppingDistance;//Bocchi:与玩家的停止移动的距离
+    [Header("敌人使用技能的概率")]
+    public float skillRate;//Bocchi:敌人使用技能的概率
 
     private void Awake()
     {
