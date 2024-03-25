@@ -1210,13 +1210,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2955397453966282311, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
+      propertyPath: skillRate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4326056684637801489, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
       propertyPath: m_Name
       value: Death-SpritSheet
-      objectReference: {fileID: 0}
-    - target: {fileID: 4326056684637801489, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458059632160183850, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
       propertyPath: m_LocalPosition.x
