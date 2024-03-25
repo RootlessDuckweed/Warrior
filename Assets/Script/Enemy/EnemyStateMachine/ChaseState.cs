@@ -104,11 +104,6 @@ public class ChaseState:BaseState
 
             }
         }
-        else
-        {
-            currentEnemy.anim.SetBool("isChase", true);
-            currentEnemy.moveable = true;
-        }
     }
 
     protected void Skill(Collider2D player)
