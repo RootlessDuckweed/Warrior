@@ -230,7 +230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8458059632160183850
 Transform:
   m_ObjectHideFlags: 0
@@ -439,6 +439,7 @@ MonoBehaviour:
   canAttack: 0
   chaseRadius: 4.7
   stoppingDistance: 3
+  skillRate: 0.5
 --- !u!114 &1364045916434341977
 MonoBehaviour:
   m_ObjectHideFlags: 0
