@@ -182,16 +182,9 @@ public class PlayerController : MonoBehaviour
                 attackCriticalData.SetCritical(isCritical);
             }
         }
-        else
-        {
-            isCritical = false;
-            attackCriticalData.SetCritical(isCritical);
-        }
+    
     }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isCritical = false;
-    }
+
 
 
     public void PerformCriticalAttack()
@@ -209,5 +202,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSecondsRealtime(critDuration);
         print("ResumeTime");
         Time.timeScale = 1f;
+        isCritical = false;
+        attackCriticalData.SetCritical(isCritical);
     }
 }

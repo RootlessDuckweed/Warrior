@@ -1273,6 +1273,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6393115625910458846, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 576
+      objectReference: {fileID: 0}
     - target: {fileID: 7153633585606971357, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
       propertyPath: attackData
       value: 
@@ -1284,6 +1288,14 @@ PrefabInstance:
     - target: {fileID: 7153633585606971357, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
       propertyPath: critTimeScale
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585895608175864560, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 576
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882381285678362864, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 576
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
