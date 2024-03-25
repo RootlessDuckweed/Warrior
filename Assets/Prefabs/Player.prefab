@@ -256,6 +256,11 @@ MonoBehaviour:
   inputDirection: {x: 0, y: 0}
   playerAnimaton: {fileID: 0}
   physicsCheck: {fileID: 0}
+  attackCriticalData: {fileID: 11400000, guid: 68d8f87677ca74d48a3a15e80f76eac6, type: 2}
+  criticalRate: 0.5
+  critTimeScale: 0.15
+  critDuration: 0.3
+  isCritical: 0
   hurtForce: 3
   moveSpeed: 200
   currentFace: 0
@@ -447,10 +452,7 @@ MonoBehaviour:
   damage: 10
   extraDamage: 0
   criticalAddtionScale: 1.5
-  criticalRate: 0.5
-  critTimeScale: 0.15
-  critDuration: 0.3
-  isCritical: 0
+  attackData: {fileID: 11400000, guid: 68d8f87677ca74d48a3a15e80f76eac6, type: 2}
 --- !u!1 &1664168007364437023
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,10 +557,7 @@ MonoBehaviour:
   damage: 10
   extraDamage: 0
   criticalAddtionScale: 1.5
-  criticalRate: 0.5
-  critTimeScale: 0.15
-  critDuration: 0.2
-  isCritical: 0
+  attackData: {fileID: 11400000, guid: 68d8f87677ca74d48a3a15e80f76eac6, type: 2}
 --- !u!1 &6203026878625140497
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +628,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 512
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -831,7 +830,4 @@ MonoBehaviour:
   damage: 10
   extraDamage: 0
   criticalAddtionScale: 2
-  criticalRate: 0.5
-  critTimeScale: 0.15
-  critDuration: 0.2
-  isCritical: 0
+  attackData: {fileID: 11400000, guid: 68d8f87677ca74d48a3a15e80f76eac6, type: 2}
