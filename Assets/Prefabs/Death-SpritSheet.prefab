@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2814470592091178317}
   m_Layer: 7
   m_Name: Skill
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -439,6 +439,7 @@ MonoBehaviour:
   canAttack: 0
   chaseRadius: 4.7
   stoppingDistance: 3
+  skillRate: 1
 --- !u!114 &1364045916434341977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,7 +567,7 @@ GameObject:
   - component: {fileID: 1852875835522829787}
   m_Layer: 7
   m_Name: Attack
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
