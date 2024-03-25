@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // 子物体Attack攻击游戏对象 接触判断
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
