@@ -11,6 +11,16 @@ public class PlayerController : MonoBehaviour
     public PlayerAnimaton playerAnimaton; //自身的PlayerAnimation脚本组件
     public PhysicsCheck physicsCheck; //自身物理检测脚本组件
 
+    [Header("事件")]
+    public AttackSO attackCriticalData;
+    [Header("暴击几率 0~1")]
+    public float criticalRate; //暴击几率
+    [Header("暴击时间变慢的比例")]
+    public float critTimeScale;
+    [Header("暴击暴击时间变慢的时长")]
+    public float critDuration;
+    public bool isCritical; //是否暴击
+
     public float hurtForce;
     public float moveSpeed;
     public float currentFace;
@@ -59,8 +69,6 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         input.GamePlay.Enable();
-
-        
     }
     private void OnDisable()
     {
@@ -154,5 +162,52 @@ public class PlayerController : MonoBehaviour
         gameObject.tag = "Untagged";
         gameObject.layer = 3;
         rb.mass = 100f;
+    }
+
+    // 子物体Attack攻击游戏对象 接触判断
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            float randomRate = UnityEngine.Random.value;
+            if (randomRate < criticalRate || randomRate >= 1f)
+            {
+                isCritical = true;
+                attackCriticalData.SetCritical(isCritical);
+                
+            }
+            else
+            {
+                isCritical = false;
+                attackCriticalData.SetCritical(isCritical);
+            }
+        }
+        else
+        {
+            isCritical = false;
+            attackCriticalData.SetCritical(isCritical);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isCritical = false;
+    }
+
+
+    public void PerformCriticalAttack()
+    {
+        if (!attackCriticalData.GetCritical()) return;
+        // 暂停游戏时间
+        Time.timeScale = critTimeScale;
+
+        // 在暴击效果结束后恢复时间的流逝
+        StartCoroutine(ResumeTime());
+    }
+
+    IEnumerator ResumeTime()
+    {
+        yield return new WaitForSecondsRealtime(critDuration);
+        print("ResumeTime");
+        Time.timeScale = 1f;
     }
 }
