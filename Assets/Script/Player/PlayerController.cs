@@ -167,14 +167,15 @@ public class PlayerController : MonoBehaviour
     // 子物体Attack攻击游戏对象 接触判断
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy")&&isAttack)
         {
             float randomRate = UnityEngine.Random.value;
             if (randomRate < criticalRate || randomRate >= 1f)
             {
                 isCritical = true;
                 attackCriticalData.SetCritical(isCritical);
-                
+                PerformCriticalAttack();
+
             }
             else
             {
@@ -185,11 +186,8 @@ public class PlayerController : MonoBehaviour
     
     }
 
-
-
     public void PerformCriticalAttack()
     {
-        if (!attackCriticalData.GetCritical()) return;
         // 暂停游戏时间
         Time.timeScale = critTimeScale;
 

@@ -1027,7 +1027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &387655107
 Animator:
   serializedVersion: 5
@@ -1187,52 +1187,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055345730421185831, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
       propertyPath: m_ContactCaptureLayers.m_Bits
-      value: 512
+      value: 640
       objectReference: {fileID: 0}
-    - target: {fileID: 3223563747956555820, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: attackData
-      value: 
-      objectReference: {fileID: 11400000, guid: 68d8f87677ca74d48a3a15e80f76eac6, type: 2}
-    - target: {fileID: 3223563747956555820, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: criticalRate
-      value: 0.5
+    - target: {fileID: 2394697137668747560, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3223563747956555820, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: critTimeScale
-      value: 0.1
+    - target: {fileID: 2394697137668747560, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 192
       objectReference: {fileID: 0}
-    - target: {fileID: 4091758885764191616, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: attackData
-      value: 
-      objectReference: {fileID: 11400000, guid: 68d8f87677ca74d48a3a15e80f76eac6, type: 2}
-    - target: {fileID: 4091758885764191616, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: critDuration
-      value: 0.3
+    - target: {fileID: 2394697137668747560, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: m_CallbackLayers.m_Bits
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4091758885764191616, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: criticalRate
-      value: 0.5
+    - target: {fileID: 2394697137668747560, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 4091758885764191616, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: critTimeScale
-      value: 0.15
+    - target: {fileID: 2394697137668747560, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: m_ContactCaptureLayers.m_Bits
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5517990666810380076, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: critDuration
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5517990666810380076, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: criticalRate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5517990666810380076, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: critTimeScale
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5517990666810380076, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: attackCriticalData
-      value: 
-      objectReference: {fileID: 11400000, guid: 68d8f87677ca74d48a3a15e80f76eac6, type: 2}
     - target: {fileID: 6390215931871514509, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.302
@@ -1273,29 +1249,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6393115625910458846, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 576
-      objectReference: {fileID: 0}
-    - target: {fileID: 7153633585606971357, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: attackData
-      value: 
-      objectReference: {fileID: 11400000, guid: 68d8f87677ca74d48a3a15e80f76eac6, type: 2}
-    - target: {fileID: 7153633585606971357, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: criticalRate
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7153633585606971357, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: critTimeScale
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8585895608175864560, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 576
-      objectReference: {fileID: 0}
-    - target: {fileID: 8882381285678362864, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 576
+    - target: {fileID: 6410541058115908511, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

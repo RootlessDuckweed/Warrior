@@ -257,8 +257,8 @@ MonoBehaviour:
   playerAnimaton: {fileID: 0}
   physicsCheck: {fileID: 0}
   attackCriticalData: {fileID: 11400000, guid: 68d8f87677ca74d48a3a15e80f76eac6, type: 2}
-  criticalRate: 0.5
-  critTimeScale: 0.15
+  criticalRate: 1
+  critTimeScale: 0
   critDuration: 0.3
   isCritical: 0
   hurtForce: 3
@@ -399,8 +399,8 @@ PolygonCollider2D:
     m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
-  m_LayerOverridePriority: 0
+    m_Bits: 576
+  m_LayerOverridePriority: 10
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -501,8 +501,8 @@ PolygonCollider2D:
     m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
-  m_LayerOverridePriority: 0
+    m_Bits: 576
+  m_LayerOverridePriority: 10
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -575,7 +575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2145646781680053350
 Transform:
   m_ObjectHideFlags: 0
@@ -773,8 +773,8 @@ PolygonCollider2D:
     m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
-  m_LayerOverridePriority: 0
+    m_Bits: 576
+  m_LayerOverridePriority: 10
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
