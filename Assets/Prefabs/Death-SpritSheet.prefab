@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2814470592091178317}
   m_Layer: 7
   m_Name: Skill
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,10 +123,7 @@ MonoBehaviour:
   damage: 10
   extraDamage: 0
   criticalAddtionScale: 0
-  criticalRate: 0.5
-  critTimeScale: 0
-  critDuration: 0
-  isCritical: 0
+  attackData: {fileID: 0}
 --- !u!60 &2814470592091178317
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -550,10 +547,7 @@ MonoBehaviour:
   damage: 1
   extraDamage: 0
   criticalAddtionScale: 0
-  criticalRate: 0
-  critTimeScale: 0
-  critDuration: 0
-  isCritical: 0
+  attackData: {fileID: 0}
 --- !u!1 &5154242606071821825
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +561,7 @@ GameObject:
   - component: {fileID: 1852875835522829787}
   m_Layer: 7
   m_Name: Attack
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -602,10 +596,7 @@ MonoBehaviour:
   damage: 5
   extraDamage: 0
   criticalAddtionScale: 0
-  criticalRate: 0
-  critTimeScale: 0
-  critDuration: 0
-  isCritical: 0
+  attackData: {fileID: 0}
 --- !u!60 &1852875835522829787
 PolygonCollider2D:
   m_ObjectHideFlags: 0
