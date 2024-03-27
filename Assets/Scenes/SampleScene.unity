@@ -1027,7 +1027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &387655107
 Animator:
   serializedVersion: 5
@@ -1185,30 +1185,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2055345730421185831, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: m_ContactCaptureLayers.m_Bits
-      value: 640
-      objectReference: {fileID: 0}
-    - target: {fileID: 2394697137668747560, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: m_UsedByEffector
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2394697137668747560, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 192
-      objectReference: {fileID: 0}
-    - target: {fileID: 2394697137668747560, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: m_CallbackLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2394697137668747560, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: m_LayerOverridePriority
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2394697137668747560, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: m_ContactCaptureLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6390215931871514509, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.302
@@ -1247,10 +1223,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6390215931871514509, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6410541058115908511, guid: 961fdc98326be984795aa565e3e04ab6, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1485,6 +1457,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1364045916434341977, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
+      propertyPath: invulnerableDuration
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4326056684637801489, guid: 62dc4a4720896ec408d9c94f3118af84, type: 3}
       propertyPath: m_Name
       value: Death-SpritSheet

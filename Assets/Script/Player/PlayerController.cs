@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     public bool isHurt;
     public bool isDead;
     public bool isDash;
+
+    public GameObject critical;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -164,7 +166,7 @@ public class PlayerController : MonoBehaviour
         rb.mass = 100f;
     }
 
-    // 子物体Attack攻击游戏对象 接触判断
+    // 子物体Attack攻击游戏对象 接触判断 是否造成了暴击
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy")&&isAttack)
@@ -174,8 +176,7 @@ public class PlayerController : MonoBehaviour
             {
                 isCritical = true;
                 attackCriticalData.SetCritical(isCritical);
-                PerformCriticalAttack();
-
+                critical.SetActive(true); //激活产生暴击的对象
             }
             else
             {
@@ -186,21 +187,5 @@ public class PlayerController : MonoBehaviour
     
     }
 
-    public void PerformCriticalAttack()
-    {
-        // 暂停游戏时间
-        Time.timeScale = critTimeScale;
-
-        // 在暴击效果结束后恢复时间的流逝
-        StartCoroutine(ResumeTime());
-    }
-
-    IEnumerator ResumeTime()
-    {
-        yield return new WaitForSecondsRealtime(critDuration);
-        print("ResumeTime");
-        Time.timeScale = 1f;
-        isCritical = false;
-        attackCriticalData.SetCritical(isCritical);
-    }
+    
 }
