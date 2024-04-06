@@ -16,22 +16,29 @@ public class UIManager : Singleton<UIManager>
     private PlayerInput inputActions;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
-        base.Awake();
         //初始化字典集
+        base.Awake();
         prefabDict = new Dictionary<string, GameObject>();
         panelDict = new Dictionary<string, BasePanel>();
         canvas_Root = GameObject.Find("Canvas").transform;
         inputActions = new PlayerInput();
         inputActions.UI.Enable();
         inputActions.UI.Pause.performed += OnPause;
+        inputActions.UI.OpenInventory.performed += OnOpenInventory;
     }
 
     //TODO:暂时放在这里,之后单独分离到专门的控制类中
     private void OnPause(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         OpenPanel("PausePanel");
+    }
+
+    //打开背包
+    private void OnOpenInventory(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        OpenPanel("InventoryPanel");
     }
 
     //打开界面

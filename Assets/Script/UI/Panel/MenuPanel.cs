@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Channels;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +12,9 @@ public class MenuPanel : BasePanel
     protected override void Awake()
     {
         base.Awake();
-        newGameBtn = GameObject.Find("NewGameButton").GetComponent<Button>();
-        continueBtn = GameObject.Find("ContinueButton").GetComponent<Button>();
-        quitBtn = GameObject.Find("QuitButton").GetComponent<Button>();
+        newGameBtn = transform.Find("NewGameButton").GetComponent<Button>();
+        continueBtn = transform.Find("ContinueButton").GetComponent<Button>();
+        quitBtn = transform.Find("QuitButton").GetComponent<Button>();
     }
 
 
