@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Launcher : MonoBehaviour
 {
@@ -11,12 +13,46 @@ public class Launcher : MonoBehaviour
     public float launchCounter; //计数器
     public bool isLaunchCold; //发射冷却
     public Vector2 dir; // 发射方向
+
+    [HideInInspector]
+    public ObjectPool<Bullet> bulletPool;
+
+    private void Awake()
+    {
+        bulletPool = new ObjectPool<Bullet>(CreateFunc,ActionOnGet,ActionOnRelease,ActionOnDestory,false,10,1000);
+    }
+
     private void Update()
     {
         if (isStart)
         {
             LaunchTimeCounter();
         }
+    }
+
+    private Bullet CreateFunc() // 池子为空 或 超出默认对象数量调用
+    {
+        var bulletObj = Instantiate(bulletPrefab,LaunchPoint.position,Quaternion.identity,transform);
+        
+        bulletObj.bulletPool = bulletPool;
+        bulletObj.gameObject.SetActive(false);
+        bulletObj.dir = dir;
+        return bulletObj;
+    }
+
+    private void ActionOnGet(Bullet bullet) // 拿去池子对象调用
+    {
+        bullet.gameObject.SetActive(true);
+    }
+
+    private void ActionOnRelease(Bullet bullet)  //返回池子调用
+    {
+        bullet.gameObject.SetActive(false);
+    }
+
+    private void ActionOnDestory(Bullet bullet) //超出池子大小，无法返回池子时调用
+    {
+        Destroy(bullet);
     }
 
     private void LaunchTimeCounter()
@@ -28,8 +64,9 @@ public class Launcher : MonoBehaviour
             {
                 isLaunchCold = false;
                 launchCounter = launchTime;
-                var bullet = Instantiate(bulletPrefab, LaunchPoint.position, Quaternion.identity);
-                bullet.dir = dir;
+                var bulletObject = bulletPool.Get();
+                bulletObject.transform.position=LaunchPoint.transform.position;
+                bulletObject.dir = dir;
             }
         }
     }
