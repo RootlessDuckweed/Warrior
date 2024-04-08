@@ -7,14 +7,11 @@ using UnityEngine.UI;
 public class InventoryPanel : BasePanel
 {
     Button closeButton;
-    GameObject slotGrid;
     // Start is called before the first frame update
     void Start()
     {
         closeButton = transform.Find("CloseButton").GetComponent<Button>();
         closeButton.onClick.AddListener(OnCloseButtonClicked);
-        slotGrid= transform.Find("GridPanel").gameObject;
-        InventoryManager.Instance.CreateProp(slotGrid);
     }
 
     void OnCloseButtonClicked()
