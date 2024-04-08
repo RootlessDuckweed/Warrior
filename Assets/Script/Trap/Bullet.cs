@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour
 {
@@ -8,10 +9,13 @@ public class Bullet : MonoBehaviour
     public float speed;  // 发射速度
     [HideInInspector]
     public Vector2 dir; // 发射方向
+
+    public ObjectPool<Bullet> bulletPool;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
+ 
     private void FixedUpdate()
     {
         rb.velocity= dir *speed* Time.deltaTime;
@@ -93,7 +97,7 @@ public class Bullet : MonoBehaviour
                 break;
 
             case "Ground":
-                Destroy(this.gameObject);
+                bulletPool?.Release(this);
                 break;
 
             default:
