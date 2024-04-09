@@ -19,13 +19,22 @@ public class SlotDescriptionPanel : BasePanel
         cancelButton=transform.Find("CancelButton").GetComponent<Button>();
         useButton.onClick.AddListener(OnUseButtonClicked);
         cancelButton.onClick.AddListener(OnCancelButtonClicked);
+    } 
+
+    private void OnDisable()
+    {
+        useButton.onClick.RemoveAllListeners();
+        cancelButton.onClick.RemoveAllListeners();
     }
 
     //Bocchi:点击使用按钮调用的事件
     void OnUseButtonClicked()
     {
         propSO.UseProp();
+        InventoryManager.Instance.RemoveProp(propSO); 
+        InventoryManager.Instance.RefreshProp();
         UIManager.Instance.ClosePanel(gameObject.name);
+        
     }
 
     //Bocchi:点击取消按钮调用的事件
