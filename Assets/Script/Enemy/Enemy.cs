@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour
         //Bocchi:当敌人没有死亡或者没受伤时调用移动函数
            if (!FoundPlayer())
            {
-               if (currentState==patrolState)
+               if (currentState!=patrolState)
                {
                    SwitchState(State.PATROL);
                }
