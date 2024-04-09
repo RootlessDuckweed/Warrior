@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     public float critDuration;
     public bool isCritical; //是否暴击
 
+    [Header("冲刺影子参数")]
+    public float dashShadowDuraTime;
+    private float dashShadowTimeCounter;
+
     public float hurtForce;
     public float moveSpeed;
     public float currentFace;
@@ -54,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerDash(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        if (isDashCold) return;
+        if (isDashCold||isAttack) return;
         isDash = true;
         rb.AddForce(Vector2.right*dashForce*currentFace,ForceMode2D.Impulse);
         isDashCold = true;
@@ -80,6 +84,7 @@ public class PlayerController : MonoBehaviour
     {
         SlideTimeCounter();
         DashTimeCounter();
+        PlayerDashShadow();
         inputDirection = input.GamePlay.Move.ReadValue<Vector2>();
     }
 
@@ -144,6 +149,19 @@ public class PlayerController : MonoBehaviour
             if (dashTimeCounter <= 0f)
             {
                 isDashCold = false;
+            }
+        }
+    }
+
+    void PlayerDashShadow()
+    {
+        if (isDash)
+        {
+            dashShadowTimeCounter -= Time.deltaTime;
+            if (dashShadowTimeCounter <= 0f)
+            {
+                ShadowPool.Instance.Get();
+                dashShadowTimeCounter = dashShadowDuraTime;
             }
         }
     }
