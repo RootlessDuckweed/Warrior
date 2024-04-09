@@ -37,13 +37,14 @@ public class InventoryManager : Singleton<InventoryManager>
             Slot newProp = Instantiate(Instance.slotPrefab,Instance.slotGrid.transform.position,Quaternion.identity);
             newProp.gameObject.transform.SetParent(Instance.slotGrid.transform);
             newProp.propSO = Instance.propListSO.GetPropSO(item.Key);
-            newProp.propSO.usePropEvent.AddListener(delegate{ RemoveProp(newProp.propSO); RefreshProp(); });
+            //newProp.propSO.usePropEvent.AddListener(delegate{ RemoveProp(newProp.propSO); RefreshProp(); });
             newProp.slotImage.sprite = newProp.propSO.Image;
             newProp.slotNum.text = item.Value.ToString();
         }
 
     }
 
+    //显示道具具体描述
     public static void DisplayDescription(PropSO newPropSO)
     {
         UIManager.Instance.OpenPanel("SlotDescriptionPanel");
