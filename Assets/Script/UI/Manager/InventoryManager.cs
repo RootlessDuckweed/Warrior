@@ -39,6 +39,7 @@ public class InventoryManager : Singleton<InventoryManager>
             newProp.propSO = Instance.propListSO.GetPropSO(item.Key);
             //newProp.propSO.usePropEvent.AddListener(delegate{ RemoveProp(newProp.propSO); RefreshProp(); });
             newProp.slotImage.sprite = newProp.propSO.Image;
+            newProp.gameObject.transform.localScale = new(1, 1, 1);
             newProp.slotNum.text = item.Value.ToString();
         }
 
