@@ -131,7 +131,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1589159081
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -3318188226485093758, guid: ae72133dacba6ec4eb33ecde48f50e56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 8312665282120523344}
   - component: {fileID: 5589052663275467105}
   - component: {fileID: 1630162893143308958}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Attack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 7963284885115486893}
   - component: {fileID: 3352893089882843146}
   - component: {fileID: 5514809907765753842}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Attack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8472144617637388995}
   - component: {fileID: 8710977862271472028}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Slide Collider Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -728,7 +728,7 @@ GameObject:
   - component: {fileID: 7406857407917681573}
   - component: {fileID: 5815791924711727110}
   - component: {fileID: 429136562279247926}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DashAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,7 +954,7 @@ GameObject:
   - component: {fileID: 6065756549268928258}
   - component: {fileID: 588381983321604019}
   - component: {fileID: 6891290473848647869}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
