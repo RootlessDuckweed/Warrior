@@ -36,6 +36,8 @@ public class InventoryManager : Singleton<InventoryManager>
         {
             Slot newProp = Instantiate(Instance.slotPrefab,Instance.slotGrid.transform.position,Quaternion.identity);
             newProp.gameObject.transform.SetParent(Instance.slotGrid.transform);
+            //Bocchi:强制缩放比为1:1:1
+            newProp.gameObject.transform.localScale = Vector3.one;
             newProp.propSO = Instance.propListSO.GetPropSO(item.Key);
             //newProp.propSO.usePropEvent.AddListener(delegate{ RemoveProp(newProp.propSO); RefreshProp(); });
             newProp.slotImage.sprite = newProp.propSO.Image;
