@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ShadowPool : MonoBehaviour
 {
-    private ShadowPool _instance;
+    private static ShadowPool _instance;
 
-    public static  ShadowPool Instance;
+    public static ShadowPool Instance => _instance;
     public GameObject shadowPrefab;
     public int shadowCount;
     
@@ -17,7 +17,6 @@ public class ShadowPool : MonoBehaviour
         if (_instance == null)
         {
              _instance = this;
-            Instance = _instance;
             FillPool();
         }
         else
