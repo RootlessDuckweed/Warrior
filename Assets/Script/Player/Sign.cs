@@ -8,6 +8,8 @@ public class Sign : MonoBehaviour
 {
     PlayerInput input;
     IInteractable targetItem;
+    bool canPress;
+    GameObject target;
     private void Awake()
     {
         input = new PlayerInput();
@@ -27,18 +29,31 @@ public class Sign : MonoBehaviour
     // 按下确认按钮 触发可互动对象的 互动逻辑
     private void OnConfirmAction(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        targetItem?.TriggerAction();
-        print("Confirm");
+        if (canPress)
+        {
+            targetItem?.TriggerAction();
+            print("Confirm");
+            canPress = false;
+            target.tag = "Untagged";
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Interactable"))
+        {
+            canPress = true;
+            targetItem = collision.gameObject.GetComponent<IInteractable>();
+            target = collision.gameObject;
+        }
+            
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Interactable"))
-        {
-            //TODO: 显示可互动的图标指示
-            targetItem = collision.gameObject.GetComponent<IInteractable>();
-            print("Interactable");
-        }
+       
+         //TODO: 显示可互动的图标指示
+         
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

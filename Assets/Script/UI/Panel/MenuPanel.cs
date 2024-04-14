@@ -15,6 +15,10 @@ public class MenuPanel : BasePanel
         newGameBtn = transform.Find("NewGameButton").GetComponent<Button>();
         continueBtn = transform.Find("ContinueButton").GetComponent<Button>();
         quitBtn = transform.Find("QuitButton").GetComponent<Button>();
+
+        //RootlessDuckweed : Ìí¼ÓÊÂ¼þ¼àÌý
+        newGameBtn.onClick.AddListener(SceneLoaderManager.Instance.NewGame);
+        
     }
 
 

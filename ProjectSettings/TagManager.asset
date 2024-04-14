@@ -22,7 +22,7 @@ TagManager:
   - PlayerDead
   - Interactable
   - Bullet
-  - 
+  - Sign
   - 
   - 
   - 
@@ -52,6 +52,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 2921407447
+    locked: 0
   - name: Back
     uniqueID: 1832480417
     locked: 0

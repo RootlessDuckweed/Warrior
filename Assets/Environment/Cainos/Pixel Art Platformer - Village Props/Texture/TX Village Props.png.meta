@@ -3605,7 +3605,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TX Village Props - Stone of Recall
+      name: Transition
       rect:
         serializedVersion: 2
         x: 161
@@ -4763,7 +4763,6 @@ TextureImporter:
       TX Village Props - Stall Tent Pillar: 21300190
       TX Village Props - Statue: 21300150
       TX Village Props - Statue Bouquet: 21300152
-      TX Village Props - Stone of Recall: -1758970209
       TX Village Props - Stone of Recall - Glow: -1796461765
       TX Village Props - Stump: 21300062
       TX Village Props - Sunflower 01: 21300262
@@ -4794,6 +4793,7 @@ TextureImporter:
       TX Village Props - Wooden Bridge Part 04: 1792859017
       TX Village Props - Wooden Bridge Part 05: -446960186
       TX Village Props - Wooden Bridge Rope: 1919939598
+      Transition: -1758970209
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
