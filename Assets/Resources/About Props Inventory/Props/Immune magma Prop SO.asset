@@ -18,3 +18,4 @@ MonoBehaviour:
   usePropEvent:
     m_PersistentCalls:
       m_Calls: []
+  useable: 1

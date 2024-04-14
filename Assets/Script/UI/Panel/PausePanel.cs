@@ -13,4 +13,16 @@ public class PausePanel : BasePanel
         continueBtn=GameObject.Find("ContinueButton").GetComponent<Button>();
         backToMenuBtn=GameObject.Find("BackToMenuButton").GetComponent<Button>();
     }
+    private void Start()
+    {
+        //Bocchi:‘›Õ£”Œœ∑
+        OnPause();
+        continueBtn.onClick.AddListener(OnContinue);
+    }
+
+    protected override void OnContinue()
+    {
+        base.OnContinue();
+        UIManager.Instance.ClosePanel(gameObject.name);
+    }
 }

@@ -13,6 +13,7 @@ public class PropSO : ScriptableObject,IProp
     public string description; //描述
     public Sprite Image; //显示的图片
     public UnityEvent usePropEvent; //使用了道具之后，我们会触发什么事件
+    public bool useable;
     public void UseProp()
     {
         usePropEvent?.Invoke();

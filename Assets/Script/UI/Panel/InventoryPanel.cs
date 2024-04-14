@@ -14,17 +14,19 @@ public class InventoryPanel : BasePanel
         closeButton = transform.Find("CloseButton").GetComponent<Button>();
         closeButton.onClick.AddListener(OnCloseButtonClicked);
         slotGrid= transform.Find("GridPanel").gameObject;
+        //Bocchi:‘›Õ£”Œœ∑
+        OnPause();
         InventoryManager.Instance.CreateProp(slotGrid);
     }
 
     void OnCloseButtonClicked()
     {
-        UIManager.Instance.ClosePanel(gameObject.name);
+        OnContinue();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnContinue()
     {
-        
+        base.OnContinue();
+        UIManager.Instance.ClosePanel(gameObject.name);
     }
 }
