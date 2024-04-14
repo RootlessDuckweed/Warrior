@@ -17,7 +17,15 @@ public class SlotDescriptionPanel : BasePanel
     {
         useButton=transform.Find("UseButton").GetComponent<Button>();
         cancelButton=transform.Find("CancelButton").GetComponent<Button>();
-        useButton.onClick.AddListener(OnUseButtonClicked);
+        if (propSO.useable)
+        {
+            useButton.interactable = true;
+            useButton.onClick.AddListener(OnUseButtonClicked);
+        }
+        else
+        {
+            useButton.interactable=false;
+        }
         cancelButton.onClick.AddListener(OnCancelButtonClicked);
     } 
 
