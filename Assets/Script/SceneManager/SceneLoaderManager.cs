@@ -1,24 +1,34 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.XR.OpenVR;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
+
+
 public class SceneLoaderManager : Singleton<SceneLoaderManager>
 {
     public GameSceneSO FristSceneSO;
     public GameSceneSO nextSceneSO;
     private GameSceneSO currentSceneSO;
+    [HideInInspector] public GameSceneSO saveSceneSO;
+    private Transform playerTrans;
+    private bool isSavePoint;
 
     [Header("Event")]
     public FadeSO FadeEvent;
     public float fadeDuration;
+
+
     protected override void Awake()
     {
         base.Awake();
+       
     }
 
     private void Start()
@@ -31,8 +41,23 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
     {
         //TODO:Fade in
         nextSceneSO = FristSceneSO;
-        StartToLoad(FristSceneSO);
+        StartToLoad(nextSceneSO);
         UIManager.Instance.ClosePanel("MenuPanel");   
+    }
+
+    // 菜单的继续
+    public void ContinueGame()
+    {
+        if(currentSceneSO == null)
+        {
+            isSavePoint = true;
+            var newScene = ScriptableObject.CreateInstance<GameSceneSO>();
+            JsonUtility.FromJsonOverwrite(ReadSaveScenePoint(), newScene);
+            nextSceneSO = newScene;
+            StartToLoad(nextSceneSO);
+            UIManager.Instance.ClosePanel("MenuPanel");
+
+        }
     }
 
     //开始 读取下一关
@@ -49,6 +74,14 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
         SceneManager.SetActiveScene(obj.Result.Scene);
         FadeEvent.RaisedEvent(fadeDuration, false);
         currentSceneSO = nextSceneSO;
+        playerTrans = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        if (isSavePoint)
+        {
+            playerTrans.position = currentSceneSO.positionToGo;
+            isSavePoint = false;
+            return;
+        }
+        SaveScenePoint(playerTrans.position);
     }
 
     // 加载下一关的逻辑 包括卸载当前场景
@@ -71,4 +104,20 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
         StartCoroutine(LoadScene(fadeDuration,true));
     }
    
+    public void SaveScenePoint(Vector3 position)
+    {
+        saveSceneSO = currentSceneSO;
+        saveSceneSO.positionToGo = position;
+        string saveJson = JsonUtility.ToJson(saveSceneSO);
+        if (!Directory.Exists(Application.streamingAssetsPath))
+        {
+            Directory.CreateDirectory(Application.streamingAssetsPath);
+        }
+        File.WriteAllText(Application.streamingAssetsPath+"/saveSceneJson.json",saveJson);
+    }
+
+    private string ReadSaveScenePoint()
+    {
+        return File.ReadAllText(Application.streamingAssetsPath + "/saveSceneJson.json");
+    }
 }

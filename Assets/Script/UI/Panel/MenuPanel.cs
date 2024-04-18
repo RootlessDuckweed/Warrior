@@ -18,6 +18,7 @@ public class MenuPanel : BasePanel
 
         //RootlessDuckweed : Ìí¼ÓÊÂ¼ş¼àÌı
         newGameBtn.onClick.AddListener(SceneLoaderManager.Instance.NewGame);
+        continueBtn.onClick.AddListener(SceneLoaderManager.Instance.ContinueGame);
         
     }
 

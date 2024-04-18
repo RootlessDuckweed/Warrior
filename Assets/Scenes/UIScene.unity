@@ -518,6 +518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FristSceneSO: {fileID: 11400000, guid: 861318f6bc7c25d4bb00c2970ebfbf53, type: 2}
   nextSceneSO: {fileID: 0}
+  saveSceneSO: {fileID: 0}
   FadeEvent: {fileID: 11400000, guid: 93f501de50b74a04aa68ec0abd0651b6, type: 2}
   fadeDuration: 1
 --- !u!4 &2098333934

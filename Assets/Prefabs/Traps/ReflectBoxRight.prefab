@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 50f338feb89df434c90854e375fd9360, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,8 +136,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4888889, y: 0.4888889}
-    oldSize: {x: 1.40625, y: 1.40625}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1.40625, y: 1.40625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -145,14 +145,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.48446858, y: 0.38705838}
-      - {x: -0.116131485, y: 0.017802238}
-      - {x: -0.05791998, y: -0.040544987}
-      - {x: 0.02836591, y: -0.124985695}
-      - {x: 0.38114095, y: -0.46856284}
-      - {x: 0.5073526, y: -0.34689736}
-      - {x: 0.06526399, y: 0.087656975}
-      - {x: -0.34548795, y: 0.5146946}
+    - - {x: -0.55909574, y: 0.4430288}
+      - {x: -0.12501425, y: 0.0066986084}
+      - {x: -0.06236148, y: -0.049427986}
+      - {x: 0.030587018, y: -0.1338687}
+      - {x: 0.3900237, y: -0.48410797}
+      - {x: 0.5517671, y: -0.3202486}
+      - {x: 0.098575115, y: 0.13429236}
+      - {x: -0.3828014, y: 0.6154412}
   m_UseDelaunayMesh: 0
 --- !u!61 &3401206675767455865
 BoxCollider2D:
@@ -186,18 +186,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.015625, y: 0.015625}
+  m_Offset: {x: 0.0050475597, y: 0.062467933}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4888889, y: 0.4888889}
-    oldSize: {x: 1.40625, y: 1.40625}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1.40625, y: 1.40625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.40625, y: 1.40625}
+  m_Size: {x: 1.2642107, y: 1.2486818}
   m_EdgeRadius: 0
 --- !u!50 &4240720914241988144
 Rigidbody2D:

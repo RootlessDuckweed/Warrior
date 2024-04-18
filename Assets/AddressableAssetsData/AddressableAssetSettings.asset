@@ -87,6 +87,9 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - SceneUI
+    - SceneFrist
+    - SceneSecond
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 740112cf3fe3265478599ec58b2aa49e, type: 2}

@@ -20,17 +20,20 @@ MonoBehaviour:
   - m_GUID: aac2e98bfd0da9e43aababaa247a2579
     m_Address: SampleScene 1
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - SceneSecond
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8c9cfa26abfee488c85f1582747f6a02
     m_Address: SampleScene
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - SceneFrist
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2d7e2a5d024fbad408435228093bcb00
     m_Address: UIScene
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - SceneUI
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a66ff4d257f0f204f80df5c44ba7803f, type: 2}
