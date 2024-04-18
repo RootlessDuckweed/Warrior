@@ -46,6 +46,7 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: c4f6fe2dea6a2d24f86df77332bcab43, type: 2}
   - {fileID: 11400000, guid: 0d196a76f6f3d1c418ece11c6daf218d, type: 2}
+  - {fileID: 11400000, guid: c65a60b5ff292ad4f99a7c9b642e3fb6, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -90,6 +91,7 @@ MonoBehaviour:
     - SceneUI
     - SceneFrist
     - SceneSecond
+    - Player
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 740112cf3fe3265478599ec58b2aa49e, type: 2}

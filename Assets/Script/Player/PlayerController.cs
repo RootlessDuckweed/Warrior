@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class PlayerController : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
         playerAnimaton = GetComponent<PlayerAnimaton>();
         physicsCheck = GetComponent<PhysicsCheck>();
         
+
         input = new PlayerInput();
         input.GamePlay.Jump.started += Jump;
         input.GamePlay.Slide.performed += Slide;
@@ -181,7 +183,8 @@ public class PlayerController : MonoBehaviour
         input.GamePlay.Disable();
         gameObject.tag = "PlayerDead";
         gameObject.layer = 3;
-        rb.mass = 100f;
+        rb.mass = 50f;
+        UIManager.Instance.OpenPanel("DeadPanel");
     }
 
     // 子物体Attack攻击游戏对象 接触判断 是否造成了暴击
