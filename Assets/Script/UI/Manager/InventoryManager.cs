@@ -1,7 +1,9 @@
 using JetBrains.Annotations;
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -12,11 +14,12 @@ public class InventoryManager : Singleton<InventoryManager>
     public PropListSO propListSO;
     public GameObject slotGrid;
     public Slot slotPrefab;
+    string saveFolder;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        saveFolder = Application.streamingAssetsPath;
     }
     public void AddProp(PropSO propSO,int count)
     {
@@ -66,5 +69,30 @@ public class InventoryManager : Singleton<InventoryManager>
             Destroy(Instance.slotGrid.transform.GetChild(i).gameObject); ;
         }
         CreateProp(Instance.slotGrid);
+    }
+
+    //Bocchi:保存背包数据
+    public void SaveInventoryData()
+    {
+        var resultPath = saveFolder + "inventoryData.json";
+        var jsonData = JsonConvert.SerializeObject(inventorySO.propsPakage);
+        if (!Directory.Exists(saveFolder))
+        {
+            Directory.CreateDirectory(saveFolder);  
+        }
+        File.WriteAllText(resultPath, jsonData);
+    }
+
+    //Bocchi:加载背包数据
+    public void LoadInventoryData()
+    {
+        var resultPath = saveFolder + "inventoryData.json";
+        if (!File.Exists(resultPath))
+        {
+            return;
+        }
+        var stringData=File.ReadAllText(resultPath);
+        var jsonData = JsonConvert.DeserializeObject<Dictionary<string, int>>(stringData);
+        inventorySO.propsPakage = jsonData;
     }
 }

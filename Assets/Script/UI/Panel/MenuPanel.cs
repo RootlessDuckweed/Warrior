@@ -19,7 +19,8 @@ public class MenuPanel : BasePanel
         //RootlessDuckweed : 添加事件监听
         newGameBtn.onClick.AddListener(SceneLoaderManager.Instance.NewGame);
         continueBtn.onClick.AddListener(SceneLoaderManager.Instance.ContinueGame);
-        
+        //Bocchi:添加加载何保存背包数据的事件监听
+        continueBtn.onClick.AddListener(InventoryManager.Instance.LoadInventoryData);
     }
 
 

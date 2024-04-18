@@ -18,9 +18,12 @@ public class PausePanel : BasePanel
         //Bocchi:‘›Õ£”Œœ∑
         OnPause();
         continueBtn.onClick.AddListener(OnContinue);
-       
     }
-  
+
+    private void OnDisable()
+    {
+        continueBtn.onClick.RemoveAllListeners();
+    }
     protected override void OnContinue()
     {
         base.OnContinue();
