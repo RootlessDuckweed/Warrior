@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb; //自身的刚体组件
-    private PlayerInput input; //输入控制器
+    [HideInInspector]public PlayerInput input; //输入控制器
     public Vector2 inputDirection; //输入人物移动的方向
     public PlayerAnimaton playerAnimaton; //自身的PlayerAnimation脚本组件
     public PhysicsCheck physicsCheck; //自身物理检测脚本组件

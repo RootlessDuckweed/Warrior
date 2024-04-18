@@ -15,8 +15,11 @@ public class InventoryPanel : BasePanel
         closeButton.onClick.AddListener(OnCloseButtonClicked);
         slotGrid= transform.Find("GridPanel").gameObject;
         //Bocchi:‘›Õ£”Œœ∑
-        OnPause();
         InventoryManager.Instance.CreateProp(slotGrid);
+    }
+    private void OnEnable()
+    {
+        base.OnPause();
     }
 
     void OnCloseButtonClicked()
