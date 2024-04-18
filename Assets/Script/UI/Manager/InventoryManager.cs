@@ -74,7 +74,7 @@ public class InventoryManager : Singleton<InventoryManager>
     //Bocchi:保存背包数据
     public void SaveInventoryData()
     {
-        var resultPath = saveFolder + "inventoryData.json";
+        var resultPath = saveFolder + "/inventoryData.json";
         var jsonData = JsonConvert.SerializeObject(inventorySO.propsPakage);
         if (!Directory.Exists(saveFolder))
         {
@@ -86,7 +86,7 @@ public class InventoryManager : Singleton<InventoryManager>
     //Bocchi:加载背包数据
     public void LoadInventoryData()
     {
-        var resultPath = saveFolder + "inventoryData.json";
+        var resultPath = saveFolder + "/inventoryData.json";
         if (!File.Exists(resultPath))
         {
             return;
