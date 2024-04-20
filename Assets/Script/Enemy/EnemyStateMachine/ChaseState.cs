@@ -14,7 +14,7 @@ public class ChaseState:BaseState
 
     public override void LogicUpdate()
     {
-
+        Attack();
     }
 
     public override void OnEnter(Enemy enemy)
@@ -33,7 +33,7 @@ public class ChaseState:BaseState
                                     currentEnemy.chaseRadius, currentEnemy.playerLayerMask);
         if (facingCollider != null)
         {
-            Attack();
+            //Attack();
             Chase(facingCollider);
         }
         else
@@ -102,6 +102,15 @@ public class ChaseState:BaseState
                 }
                 currentEnemy.canAttack = false;
 
+            }
+        }
+        else
+        {
+            if(!(currentEnemy.anim.GetCurrentAnimatorStateInfo(currentEnemy.anim.GetLayerIndex("Attack Layer")).IsName("Attack")
+                || currentEnemy.anim.GetCurrentAnimatorStateInfo(currentEnemy.anim.GetLayerIndex("Attack Layer")).IsName("Skill")))
+            {
+                currentEnemy.moveable = true;
+                currentEnemy.anim.SetBool("isChase", true);
             }
         }
     }

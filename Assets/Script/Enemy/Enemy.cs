@@ -92,6 +92,7 @@ public class Enemy : MonoBehaviour
            }
            currentState.PhysicUpdate();
         }
+        print(currentState.ToString()+moveable);
     }
 
 
