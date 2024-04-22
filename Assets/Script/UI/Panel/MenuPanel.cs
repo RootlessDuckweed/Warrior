@@ -21,6 +21,19 @@ public class MenuPanel : BasePanel
         continueBtn.onClick.AddListener(SceneLoaderManager.Instance.ContinueGame);
         //Bocchi:添加加载何保存背包数据的事件监听
         continueBtn.onClick.AddListener(InventoryManager.Instance.LoadInventoryData);
+        quitBtn.onClick.AddListener(OnQuit);
+    }
+
+    private void OnDisable()
+    {
+        newGameBtn.onClick.RemoveAllListeners();
+        continueBtn.onClick.RemoveAllListeners();
+        quitBtn.onClick.RemoveAllListeners();
+    }
+
+    private void OnQuit()
+    {
+        Application.Quit();
     }
 
 
