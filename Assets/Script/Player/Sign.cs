@@ -60,6 +60,6 @@ public class Sign : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         //TODO: 关闭可互动的图标指示
-       
+        canPress = false;
     }
 }

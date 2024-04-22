@@ -1057,6 +1057,7 @@ GameObject:
   - component: {fileID: 265490610}
   - component: {fileID: 265490609}
   - component: {fileID: 265490608}
+  - component: {fileID: 265490611}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1138,6 +1139,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &265490611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265490607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &316618031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,11 +1880,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 222053262351480405, guid: 1e79173ffa5b9cd4f923ff1eb2fb0bdb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.333
+      value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: 222053262351480405, guid: 1e79173ffa5b9cd4f923ff1eb2fb0bdb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.375
+      value: -2.04
       objectReference: {fileID: 0}
     - target: {fileID: 222053262351480405, guid: 1e79173ffa5b9cd4f923ff1eb2fb0bdb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1880,6 +1925,10 @@ PrefabInstance:
     - target: {fileID: 8906232283563075011, guid: 1e79173ffa5b9cd4f923ff1eb2fb0bdb, type: 3}
       propertyPath: m_Name
       value: Rotat_LeftReflect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906232283563075011, guid: 1e79173ffa5b9cd4f923ff1eb2fb0bdb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2111,6 +2160,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rotat_RightReflect
       objectReference: {fileID: 0}
+    - target: {fileID: 1870154310294774959, guid: a3cffb8fc06bce846aced35f330db11c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6689079364619676393, guid: a3cffb8fc06bce846aced35f330db11c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.93
@@ -2166,11 +2219,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2110449692040063339, guid: f170e2d991357b4468966b236448da0e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.79
+      value: 1.14
       objectReference: {fileID: 0}
     - target: {fileID: 2110449692040063339, guid: f170e2d991357b4468966b236448da0e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.53
+      value: 1.96
       objectReference: {fileID: 0}
     - target: {fileID: 2110449692040063339, guid: f170e2d991357b4468966b236448da0e, type: 3}
       propertyPath: m_LocalPosition.z
