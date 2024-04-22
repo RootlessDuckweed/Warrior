@@ -17,13 +17,13 @@ public class Sign : MonoBehaviour
     private void OnEnable()
     {
         input.Enable();
-        input.GamePlay.Confirm.performed += OnConfirmAction;
+        input.GamePlay.Confirm.started += OnConfirmAction;
     }
 
     private void OnDisable()
     {
         input.Disable();
-        input.GamePlay.Confirm.performed -= OnConfirmAction;
+        input.GamePlay.Confirm.started -= OnConfirmAction;
     }
 
     // 按下确认按钮 触发可互动对象的 互动逻辑
@@ -34,11 +34,18 @@ public class Sign : MonoBehaviour
             targetItem?.TriggerAction();
             print("Confirm");
             canPress = false;
-            target.tag = "Untagged";
+            if(!targetItem.RepeatInteraction())
+                target.tag = "Untagged";
+            targetItem = null;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
+    {
+       
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Interactable"))
         {
@@ -47,17 +54,12 @@ public class Sign : MonoBehaviour
             target = collision.gameObject;
         }
             
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-       
          //TODO: 显示可互动的图标指示
          
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         //TODO: 关闭可互动的图标指示
-        targetItem = null;
+       
     }
 }

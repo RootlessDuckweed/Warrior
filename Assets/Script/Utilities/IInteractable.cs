@@ -5,5 +5,6 @@ using UnityEngine;
 // RootlessDuckweed:可互动类 接口
 public interface IInteractable 
 {
+    bool RepeatInteraction(); //是否可重复互动，返回 bool
     void TriggerAction(); //互动逻辑
 }

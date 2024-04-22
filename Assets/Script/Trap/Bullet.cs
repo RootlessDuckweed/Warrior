@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class Bullet : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity= dir *speed* Time.deltaTime;
+        transform.localEulerAngles = new Vector3(0, 0, Time.deltaTime*500 + transform.localEulerAngles.z);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

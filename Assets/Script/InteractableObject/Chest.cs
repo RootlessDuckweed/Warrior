@@ -27,4 +27,9 @@ public class Chest : MonoBehaviour,IInteractable //实现IInterractable 可互动接口
         }
         
     }
+
+    public bool RepeatInteraction()
+    {
+        return false;
+    }
 }

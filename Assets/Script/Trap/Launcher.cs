@@ -13,6 +13,7 @@ public class Launcher : MonoBehaviour
     public float launchCounter; //计数器
     public bool isLaunchCold; //发射冷却
     public Vector2 dir; // 发射方向
+    public Animator anim;
 
     [HideInInspector]
     public ObjectPool<Bullet> bulletPool;
@@ -20,6 +21,7 @@ public class Launcher : MonoBehaviour
     private void Awake()
     {
         bulletPool = new ObjectPool<Bullet>(CreateFunc,ActionOnGet,ActionOnRelease,ActionOnDestory,false,10,1000);
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -75,5 +77,6 @@ public class Launcher : MonoBehaviour
     public void SetLauncher(bool isLaunch)
     {
         isStart=isLaunch;
+        anim.SetBool("isLaunch", isLaunch);
     }
 }
