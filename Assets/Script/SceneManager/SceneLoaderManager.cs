@@ -56,9 +56,8 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
             JsonUtility.FromJsonOverwrite(ReadSaveScenePoint(), newScene);
             nextSceneSO = newScene;
             StartToLoad(nextSceneSO);
-            UIManager.Instance.ClosePanel("MenuPanel");
-
-        }
+        } 
+        UIManager.Instance.ClosePanel("MenuPanel");
     }
 
     //开始 读取下一关
