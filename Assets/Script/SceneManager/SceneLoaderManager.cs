@@ -15,12 +15,13 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
 {
     public GameSceneSO FristSceneSO;
     public GameSceneSO nextSceneSO;
-    private GameSceneSO currentSceneSO;
-    [HideInInspector] public GameSceneSO saveSceneSO;
+    [SerializeField]private GameSceneSO currentSceneSO;
+    public GameSceneSO saveSceneSO;
     private Transform playerTrans;
-    private bool isSavePoint;
+    private bool isLoadSavePoint;
 
     [Header("Event")]
+    public LoadedSceneEventSO loadedSceneEvent;
     public FadeSO FadeEvent;
     public float fadeDuration;
 
@@ -50,7 +51,7 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
     {
         if(currentSceneSO == null)
         {
-            isSavePoint = true;
+            isLoadSavePoint = true;
             var newScene = ScriptableObject.CreateInstance<GameSceneSO>();
             JsonUtility.FromJsonOverwrite(ReadSaveScenePoint(), newScene);
             nextSceneSO = newScene;
@@ -75,20 +76,22 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
         FadeEvent.RaisedEvent(fadeDuration, false);
         currentSceneSO = nextSceneSO;
         playerTrans = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        if (isSavePoint)
+        if (isLoadSavePoint)
         {
             playerTrans.position = currentSceneSO.positionToGo;
-            isSavePoint = false;
-            return;
+            isLoadSavePoint = false;
         }
+        
         SaveScenePoint(playerTrans.position);
+        loadedSceneEvent.RaisedEvent();
     }
 
     // 加载下一关的逻辑 包括卸载当前场景
-     IEnumerator LoadScene(float dura,bool isFadeIn)
+    IEnumerator LoadScene(float dura,bool isFadeIn)
     {
         FadeEvent.RaisedEvent(fadeDuration, isFadeIn);
         yield return new WaitForSeconds(dura);
+
         if (currentSceneSO != null)
         {
           yield return  currentSceneSO.sceneReference.UnLoadScene(); //卸载当前关卡
@@ -120,4 +123,5 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
     {
         return File.ReadAllText(Application.streamingAssetsPath + "/saveSceneJson.json");
     }
+   
 }

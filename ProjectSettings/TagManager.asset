@@ -10,6 +10,7 @@ TagManager:
   - ReflectBox
   - Bullet
   - PlayerDead
+  - LookPoint
   layers:
   - Default
   - TransparentFX

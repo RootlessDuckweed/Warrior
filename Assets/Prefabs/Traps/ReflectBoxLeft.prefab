@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLeftReflect: 1
+  isSwitchRotat: 0
+  changeZ: 0
 --- !u!60 &2921283505255892377
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -209,7 +211,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 30
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1

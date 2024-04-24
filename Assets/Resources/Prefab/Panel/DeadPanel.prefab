@@ -479,4 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18160c209f7a51b4381425b7e7a01f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelName: 
+  isOpened: 0
   PlayerPrefab: {fileID: 0}
+  playerRespawnEvent: {fileID: 11400000, guid: bbf8479b3cc8b7d4aacc776b807be586, type: 2}

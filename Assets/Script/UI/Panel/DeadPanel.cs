@@ -9,6 +9,8 @@ public class DeadPanel : BasePanel
 {
     Button RetryBtn;
     public GameObject PlayerPrefab;
+    [Header("Event")]
+    public PlayerRespawnEventSO playerRespawnEvent;
     protected override void Awake()
     {
         RetryBtn = transform.Find("RetryButton").GetComponent<Button>();
@@ -28,7 +30,11 @@ public class DeadPanel : BasePanel
         if(handle.Status == AsyncOperationStatus.Succeeded)
         {
             GameObject player = handle.Result;
-            Instantiate(player).transform.position = SceneLoaderManager.Instance.saveSceneSO.positionToGo;
+            if (SceneLoaderManager.Instance.saveSceneSO != null)
+                Instantiate(player).transform.position = SceneLoaderManager.Instance.saveSceneSO.positionToGo;
+            else
+                Instantiate(player);
+            playerRespawnEvent.RaisedEvent();
         }
         UIManager.Instance.ClosePanel("DeadPanel");
     }

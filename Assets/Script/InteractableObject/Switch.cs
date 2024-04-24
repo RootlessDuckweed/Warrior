@@ -21,6 +21,7 @@ public class Switch : MonoBehaviour, IInteractable
             OnSwitchOpened?.Invoke();
         else 
             OnSwitchClosed?.Invoke();
+        AudioManager.Instance.PlayFX(AudioPathGlobals.SwitchAction, 0.2f);
     }
 
     public bool RepeatInteraction()

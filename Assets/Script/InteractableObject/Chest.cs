@@ -23,6 +23,7 @@ public class Chest : MonoBehaviour,IInteractable //实现IInterractable 可互动接口
             render.sprite = opened;
             gameObject.tag = "Untagged";
             isOpened = true;
+            AudioManager.Instance.PlayFX(AudioPathGlobals.OpenChest, 0.2f);
             OnChestOpened?.Invoke();
         }
         

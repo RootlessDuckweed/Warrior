@@ -183,7 +183,7 @@ public class PlayerController : MonoBehaviour
         input.GamePlay.Disable();
         gameObject.tag = "PlayerDead";
         gameObject.layer = 3;
-        rb.mass = 50f;
+        rb.mass = 2f;
         UIManager.Instance.OpenPanel("DeadPanel");
     }
 
@@ -208,5 +208,17 @@ public class PlayerController : MonoBehaviour
     
     }
 
+    #region Unity Animation Event
+    //播放第一段攻击
+    public void PlayAttackFX_1()
+    {
+        AudioManager.Instance.PlayFX(AudioPathGlobals.Attack_1,0.2f);
+    }
     
+    //播放第二段攻击
+    public void PlayAttackFX_2()
+    {
+        AudioManager.Instance.PlayFX(AudioPathGlobals.Attack_2, 0.2f);
+    }
+    #endregion
 }
