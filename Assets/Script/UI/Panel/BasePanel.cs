@@ -41,12 +41,12 @@ public class BasePanel : MonoBehaviour
     protected virtual void OnPause()
     {
         Time.timeScale = 0f;
-        GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>().input.Disable();
+        GameObject.FindGameObjectWithTag("Player")?.gameObject.GetComponent<PlayerController>().input.Disable();
     }
 
     protected virtual void OnContinue()
     {
         Time.timeScale = orginalTimeScale;
-        GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>().input.Enable();
+        GameObject.FindGameObjectWithTag("Player")?.gameObject.GetComponent<PlayerController>().input.Enable();
     }
 }

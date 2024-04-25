@@ -18,15 +18,27 @@ public class PausePanel : BasePanel
         //Bocchi:��ͣ��Ϸ
         OnPause();
         continueBtn.onClick.AddListener(OnContinue);
+        backToMenuBtn.onClick.AddListener(OnBackToMenu);
     }
 
     private void OnDisable()
     {
         continueBtn.onClick.RemoveAllListeners();
+        backToMenuBtn.onClick.RemoveAllListeners();
     }
     protected override void OnContinue()
     {
         base.OnContinue();
         UIManager.Instance.ClosePanel(gameObject.name);
     }
+
+    private void OnBackToMenu()
+    {
+        OnContinue();
+<<<<<<< HEAD
+        InventoryManager.Instance.SaveInventoryData();
+=======
+>>>>>>> 2239575 (对Panel组件获取Player输入系统进行非空检查，并添加了部分Panel的按钮的功能)
+        UIManager.Instance.OpenPanel("MenuPanel");
+    }    
 }
