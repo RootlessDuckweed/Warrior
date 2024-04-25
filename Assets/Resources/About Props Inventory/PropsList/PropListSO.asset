@@ -15,3 +15,5 @@ MonoBehaviour:
   propList:
   - {fileID: 11400000, guid: 577ee3ba1b738444c85eb766c05826e1, type: 2}
   - {fileID: 11400000, guid: a786815120f807447b54b20d0c384b5b, type: 2}
+  - {fileID: 11400000, guid: 43f10ce21dae6d147b89706887812975, type: 2}
+  - {fileID: 11400000, guid: bab49e83406407d4e962ed330f4ce4a5, type: 2}
