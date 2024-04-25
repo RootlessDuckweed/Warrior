@@ -11,6 +11,7 @@ TagManager:
   - Bullet
   - PlayerDead
   - LookPoint
+  - Bound
   layers:
   - Default
   - TransparentFX

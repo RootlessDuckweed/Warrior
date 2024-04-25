@@ -906,6 +906,8 @@ GameObject:
   - component: {fileID: 1438533135}
   - component: {fileID: 1438533134}
   - component: {fileID: 1438533136}
+  - component: {fileID: 1438533138}
+  - component: {fileID: 1438533139}
   m_Layer: 0
   m_Name: Player Virtual Camera
   m_TagString: Untagged
@@ -929,7 +931,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 20
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -982,6 +984,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnLoadedScene: {fileID: 11400000, guid: 58d02efcd947af541a098b28b74a5fb7, type: 2}
   OnPlayerRespawn: {fileID: 11400000, guid: bbf8479b3cc8b7d4aacc776b807be586, type: 2}
+  confiner: {fileID: 1438533139}
+--- !u!114 &1438533138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438533133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1438533139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438533133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BoundingShape2D: {fileID: 0}
+  m_Damping: 0.5
+  m_MaxWindowSize: -1
 --- !u!1 &2098333932
 GameObject:
   m_ObjectHideFlags: 0
