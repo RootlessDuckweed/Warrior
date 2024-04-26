@@ -62,13 +62,17 @@ public class InventoryManager : Singleton<InventoryManager>
     //刷新背包
     public void RefreshProp()
     {
-        for (int i=0;i<Instance.slotGrid.transform.childCount;i++)
+        if (Instance.slotGrid != null)
         {
-            if (Instance.slotGrid.transform.childCount == 0)
-                break;
-            Destroy(Instance.slotGrid.transform.GetChild(i).gameObject); ;
+            for (int i=0;i<Instance.slotGrid.transform.childCount;i++)
+            {
+                if (Instance.slotGrid.transform.childCount == 0)
+                    break;
+                Destroy(Instance.slotGrid.transform.GetChild(i).gameObject); ;
+            }
+            CreateProp(Instance.slotGrid);
         }
-        CreateProp(Instance.slotGrid);
+        
     }
 
     //Bocchi:保存背包数据

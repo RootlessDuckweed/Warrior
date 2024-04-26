@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea48acab7ba2da346a513581fc032345, type: 3}
   m_Name: Inventory SO
   m_EditorClassIdentifier: 
+  propsGot:
+  - Triangle
+  - Square
