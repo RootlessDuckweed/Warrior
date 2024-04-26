@@ -75,41 +75,31 @@ public class InventoryManager : Singleton<InventoryManager>
     public void SaveInventoryData()
     {
         var resultPath = saveFolder + "/inventoryData.json";
-        var resultPath2 = saveFolder + "/inventoryData2.json";
         var jsonData = JsonConvert.SerializeObject(inventorySO.propsPakage);
-        var jsonData2 = JsonConvert.SerializeObject(inventorySO.propsGot);
         if (!Directory.Exists(saveFolder))
         {
             Directory.CreateDirectory(saveFolder);
         }
         File.WriteAllText(resultPath, jsonData);
-        File.WriteAllText(resultPath2, jsonData2);
     }
 
     //Bocchi:加载背包数据
     public void LoadInventoryData()
     {
         var resultPath = saveFolder + "/inventoryData.json";
-        var resultPath2 = saveFolder + "/inventoryData2.json";
         if (!File.Exists(resultPath))
         {
             return;
         }
         var stringData=File.ReadAllText(resultPath);
-        var stringData2=File.ReadAllText(resultPath2);
         var jsonData = JsonConvert.DeserializeObject<Dictionary<string, int>>(stringData);
-        var jsonData2 = JsonConvert.DeserializeObject<List<string>>(stringData2);
         inventorySO.propsPakage = jsonData;
-        inventorySO.propsGot = jsonData2;
     }
 
     public void ClearInventoryData()
     {
         var resultPath = saveFolder + "/inventoryData.json";
-        var resultPath2 = saveFolder + "/inventoryData2.json";
         inventorySO.propsPakage.Clear();
-        inventorySO.propsGot.Clear();
         File.Delete(resultPath);
-        File.Delete(resultPath2);
     }
 }

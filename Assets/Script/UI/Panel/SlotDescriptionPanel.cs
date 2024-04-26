@@ -10,13 +10,16 @@ public class SlotDescriptionPanel : BasePanel
     public PropSO propSO;
     public TMP_Text titleText;
     public TMP_Text descriptionText;
+    Image slotImage;
     Button useButton;
     Button cancelButton;
     // Start is called before the first frame update
     void Start()
     {
+        slotImage = transform.Find("SlotImage").GetChild(0).GetComponent<Image>();
         useButton=transform.Find("UseButton").GetComponent<Button>();
         cancelButton=transform.Find("CancelButton").GetComponent<Button>();
+        slotImage.sprite = propSO.Image;
         if (propSO.useable)
         {
             useButton.interactable = true;
