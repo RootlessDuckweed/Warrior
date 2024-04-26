@@ -25,6 +25,7 @@ public class ItemDescriptonPanel : BasePanel
                 SlotItem newItem = Instantiate(itemPrefab,itemGrid.transform.position,Quaternion.identity);
                 newItem.gameObject.transform.SetParent(itemGrid.transform);
                 newItem.slotImage.sprite = item.key.Image;
+                newItem.transform.localScale=new Vector3(1,1,1);
                 newItem.slotNum.text = item.value.ToString();
                 newItem.slotName.text = item.key.propName;
             }
