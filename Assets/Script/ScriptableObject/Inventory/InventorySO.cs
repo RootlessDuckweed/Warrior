@@ -21,15 +21,13 @@ public class InventorySO : ScriptableObject
         {
             //若里面背包中本来就有该道具,则直接在字典集中为道具对应的PropStack增加数量
             propsPakage[propSO.propName] += count;
-            Debug.Log(GetPropSO(propSO.propName));
         }
         //如果字典集中没有这个实际存储的道具内容,就在字典集中加入
         else
         {
             propsPakage.Add(propSO.propName,count);
-            if(!GetPropSO(propSO.propName))
+            if(!propsGot.Contains(propSO.propName))
             {
-                InventoryManager.DisplayDescription(propSO);
                 propsGot.Add(propSO.propName);
             }
         }

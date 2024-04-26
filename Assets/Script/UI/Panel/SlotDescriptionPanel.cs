@@ -27,16 +27,10 @@ public class SlotDescriptionPanel : BasePanel
             useButton.interactable=false;
         }
         cancelButton.onClick.AddListener(OnCancelButtonClicked);
-    }
-
-    private void OnEnable()
-    {
-        OnPause();
-    }
+    } 
 
     private void OnDisable()
     {
-        OnContinue();
         useButton.onClick.RemoveAllListeners();
         cancelButton.onClick.RemoveAllListeners();
     }
