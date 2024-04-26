@@ -78,10 +78,12 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
         if (isLoadSavePoint)
         {
             playerTrans.position = currentSceneSO.positionToGo;
+            SaveInteractableObserver.LoadInteractableObj();
             isLoadSavePoint = false;
         }
         
         SaveScenePoint(playerTrans.position);
+        
         loadedSceneEvent.RaisedEvent();
     }
 

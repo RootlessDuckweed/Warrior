@@ -1,23 +1,55 @@
 using System;
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 [Serializable]
-//RootlessDuckweed£º±¦ÏäÀà
-public class Chest : MonoBehaviour,IInteractable //ÊµÏÖIInterractable ¿É»¥¶¯½Ó¿Ú
+//RootlessDuckweedï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+public class Chest : MonoBehaviour,IInteractable //Êµï¿½ï¿½IInterractable ï¿½É»ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½
 {
+
     public SpriteRenderer render;
+
     public Sprite closed;
+
     public Sprite opened;
-    private bool isOpened;
+
+    public bool isOpened;
+
+    public string ID;
+
     public UnityEvent OnChestOpened;
-    //´æ´¢±¦ÏäÖÐ»ñµÃµÄÎïÆ·
+    //ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½Ãµï¿½ï¿½ï¿½Æ·
     public List<Pair<PropSO,int>> itemList;
+
+
+    public class NeedToConvertJsonData
+    {
+        public NeedToConvertJsonData(bool isOpen)
+        {
+            isOpened = isOpen;
+        }
+
+        public bool isOpened; 
+    }
+
     private void Awake()
     {
         render = GetComponent<SpriteRenderer>();
+        
+    }
+    private void Start()
+    {
+        ID = GetComponent<GenerateOnlyGuid>().ID;
+        SaveInteractableObserver.AddObserver(ID, this);
+    }
+
+    private void OnDestroy()
+    {
+        SaveInteractableObserver.RemoveObserver(ID);
     }
     private void OnEnable()
     {
@@ -28,8 +60,8 @@ public class Chest : MonoBehaviour,IInteractable //ÊµÏÖIInterractable ¿É»¥¶¯½Ó¿Ú
     {
         OnChestOpened.RemoveListener(AddItemToInventory);
     }
-    public void TriggerAction() //ÊµÏÖ½Ó¿Ú´¥·¢»¥¶¯Âß¼­
-    {
+    public void TriggerAction() //Êµï¿½Ö½Ó¿Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
+    { 
         if (!isOpened)
         {
             render.sprite = opened;
@@ -41,7 +73,7 @@ public class Chest : MonoBehaviour,IInteractable //ÊµÏÖIInterractable ¿É»¥¶¯½Ó¿Ú
         
     }
 
-    //Bocchi:½«ÎïÆ·Ìí¼Óµ½±³°üÖÐ²¢ÏÔÊ¾»ñµÃµÄÎïÆ·
+    //Bocchi:ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ãµï¿½ï¿½ï¿½Æ·
     public void AddItemToInventory()
     {
         foreach (var item in itemList)
@@ -53,8 +85,39 @@ public class Chest : MonoBehaviour,IInteractable //ÊµÏÖIInterractable ¿É»¥¶¯½Ó¿Ú
         UIManager.Instance.panelDict["ItemDescriptionPanel"].GetComponent<ItemDescriptonPanel>().GeneratePanel(itemList);
     }
 
+   
     public bool RepeatInteraction()
     {
         return false;
     }
+
+    // ï¿½ï¿½jsonï¿½Ä¼ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+    public  void DeserializeFromJsonData(string jsonData)
+    {
+        var loaded = JsonConvert.DeserializeObject<NeedToConvertJsonData>(jsonData);
+        if (loaded != null)
+        {
+            this.isOpened = loaded.isOpened;
+            if (this.isOpened)
+            {
+                render.sprite = opened;
+                gameObject.tag = "Untagged";
+                OnChestOpened?.Invoke();
+            }
+        }
+        else
+        {
+            print("loaded was null");
+        }
+        
+    }
+
+    // ï¿½ï¿½È¡ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½jsonï¿½ï¿½ï¿½Ý´Ó±ï¿½ï¿½ï¿½ï¿½ï¿½
+    public string GetNeedToCovertJsonData()
+    {
+        return JsonConvert.SerializeObject(new NeedToConvertJsonData(isOpened));
+    }
+
+
+    
 }

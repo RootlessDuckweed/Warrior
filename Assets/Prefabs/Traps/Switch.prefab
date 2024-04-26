@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1977833377455008976}
   - component: {fileID: 1079671151664717783}
   - component: {fileID: 2570768098725015614}
+  - component: {fileID: 6106283292740265016}
   m_Layer: 9
   m_Name: Switch
   m_TagString: Interactable
@@ -173,3 +174,18 @@ MonoBehaviour:
       m_Calls: []
   anim: {fileID: 0}
   isOpen: 0
+  ID: 
+--- !u!114 &6106283292740265016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7241846900039071481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01de83794f11e4949875260b6cf742f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 
+  Regenerate: 0
