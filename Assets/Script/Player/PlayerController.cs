@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -43,11 +45,15 @@ public class PlayerController : MonoBehaviour
     public bool isHurt;
     public bool isDead;
     public bool isDash;
+    public bool isClimb;    //Bocchi: «∑Ò¥¶”⁄≈ ≈¿◊¥Ã¨
+    private float orginalGravity;
 
     public GameObject critical;
     private void Awake()
     {
+        isClimb = false;
         rb = GetComponent<Rigidbody2D>();
+        orginalGravity = rb.gravityScale;
         playerAnimaton = GetComponent<PlayerAnimaton>();
         physicsCheck = GetComponent<PhysicsCheck>();
         
@@ -94,7 +100,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if(!isHurt&&!isDash&&!isSlide)
-        Move();
+        {
+            Move();
+            Climb();
+        }
+
     }
 
     private void Move()
@@ -129,6 +139,14 @@ public class PlayerController : MonoBehaviour
             slideCounter = slideTimeDuration;
         }
         
+    }
+
+    private void Climb()
+    {
+        if (isClimb)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, moveSpeed*inputDirection.y*Time.deltaTime);
+        }
     }
     //ª¨≤˘¿‰»¥º∆ ±
     void SlideTimeCounter()
@@ -207,6 +225,24 @@ public class PlayerController : MonoBehaviour
             }
         }
     
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Ladder"))
+        {
+            rb.gravityScale = 0;
+            isClimb = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ladder"))
+        {
+            rb.gravityScale = orginalGravity;
+            isClimb = false;
+        }
     }
 
     #region Unity Animation Event

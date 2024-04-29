@@ -22,8 +22,10 @@ public class PlayerAnimaton : MonoBehaviour
         anim.SetFloat("speed", Mathf.Abs(playerController.rb.velocity.x));
         anim.SetBool("isGround", physicsCheck.isGround || physicsCheck.isPlayerDead);
         anim.SetFloat("velocityY", playerController.rb.velocity.y);
+        anim.SetFloat("velocityYAbs", Mathf.Abs(playerController.rb.velocity.y));
         anim.SetBool("dead", playerController.isDead);
         anim.SetBool("dash", playerController.isDash);
+        anim.SetBool("climb", playerController.isClimb);
     }
 
     /// <summary>

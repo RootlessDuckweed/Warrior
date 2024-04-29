@@ -13,6 +13,7 @@ TagManager:
   - LookPoint
   - Bound
   - BackGround
+  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -27,6 +28,7 @@ TagManager:
   - Bullet
   - Sign
   - Door
+  - Ladder
   - 
   - 
   - 
