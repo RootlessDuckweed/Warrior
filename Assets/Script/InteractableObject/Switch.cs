@@ -8,7 +8,9 @@ public class Switch : MonoBehaviour, IInteractable
 {
     public UnityEvent OnSwitchOpened;
     public UnityEvent OnSwitchClosed;
-    public Animator anim;
+    public Sprite open;
+    public Sprite close;
+    public SpriteRenderer render;
     public bool isOpen;
     public string ID;
     public class NeedToConvertJsonData
@@ -23,16 +25,23 @@ public class Switch : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+        render = GetComponent<SpriteRenderer>();
     }
     public void TriggerAction()
     {
         isOpen = !isOpen;
-        anim.SetBool("isOpen",isOpen);
-        if(isOpen == true) 
+        if(isOpen == true)
+        {
+            render.sprite = open;
             OnSwitchOpened?.Invoke();
-        else 
+        }
+            
+        else
+        {
+            render.sprite = close;
             OnSwitchClosed?.Invoke();
+        }
+            
         AudioManager.Instance.PlayFX(AudioPathGlobals.SwitchAction, 0.2f);
     }
 
@@ -56,12 +65,10 @@ public class Switch : MonoBehaviour, IInteractable
         var loaded= JsonConvert.DeserializeObject<NeedToConvertJsonData>(obj);
         if (isOpen = loaded.isOpened)
         {
-            anim.SetBool("isOpen", isOpen);
             OnSwitchOpened?.Invoke();
         }
         else
         {
-            anim.SetBool("isOpen", isOpen);
             OnSwitchClosed?.Invoke();
         }
     }

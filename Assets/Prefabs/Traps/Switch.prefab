@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9123431303081721635}
   - component: {fileID: 5013462408525783882}
-  - component: {fileID: 1977833377455008976}
   - component: {fileID: 1079671151664717783}
   - component: {fileID: 2570768098725015614}
   - component: {fileID: 6106283292740265016}
@@ -31,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.206, y: -2.55, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -77,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 64fe6c15c31c64141945cb0b72c402af, type: 3}
+  m_Sprite: {fileID: 446198423, guid: c7038c8c7a410a149a9302af2e38f55b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,28 +86,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!95 &1977833377455008976
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7241846900039071481}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8d1571462bd87154b8a86051b386991b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_SpriteSortPoint: 1
 --- !u!61 &1079671151664717783
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -141,18 +119,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.079865545, y: -0.23538685}
+  m_Offset: {x: 0.3215143, y: 0.17495668}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.75, y: 1.75}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2.90625, y: 1.84375}
     newSize: {x: 0.56, y: 0.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5976233, y: 0.44716024}
+  m_Size: {x: 1.9278854, y: 0.31027246}
   m_EdgeRadius: 0
 --- !u!114 &2570768098725015614
 MonoBehaviour:
@@ -168,11 +146,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnSwitchOpened:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Launcher, Assembly-CSharp
+        m_MethodName: SetLauncher
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnSwitchClosed:
     m_PersistentCalls:
-      m_Calls: []
-  anim: {fileID: 0}
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Launcher, Assembly-CSharp
+        m_MethodName: SetLauncher
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  open: {fileID: -206644586, guid: c7038c8c7a410a149a9302af2e38f55b, type: 3}
+  close: {fileID: 446198423, guid: c7038c8c7a410a149a9302af2e38f55b, type: 3}
+  render: {fileID: 0}
   isOpen: 0
   ID: 
 --- !u!114 &6106283292740265016
@@ -187,5 +191,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01de83794f11e4949875260b6cf742f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 
+  ID: acb2b1b9-e606-4ac6-8df7-72312d111706
   Regenerate: 0
