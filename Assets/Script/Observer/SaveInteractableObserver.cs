@@ -9,7 +9,7 @@ using Object = UnityEngine.Object;
 
 public static class SaveInteractableObserver 
 {
-    private static Dictionary<string,IInteractable> saveObservers = new(); //观察者列表
+    private static readonly Dictionary<string,IInteractable> saveObservers = new(); //观察者列表
     private static Dictionary<string,string> loadFromJson; // 从json文件读取的数据
     
     //添加观察者

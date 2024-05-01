@@ -49,22 +49,22 @@ public class PressureButton : MonoBehaviour
             case "Player":
                 isPress = false;
                 anim.SetBool("isPress", isPress);
-                onPressedEvent?.Invoke();
+                onReleasedEvent?.Invoke();
                 break;
             case "PlayerDead":
                 isPress = false;
                 anim.SetBool("isPress", isPress);
-                onPressedEvent?.Invoke();
+                onReleasedEvent?.Invoke();
                 break;
             case "Box":
                 isPress = false;
                 anim.SetBool("isPress", isPress);
-                onPressedEvent?.Invoke();
+                onReleasedEvent?.Invoke();
                 break;
             case "ReflectBox":
                 isPress = false;
                 anim.SetBool("isPress", isPress);
-                onPressedEvent?.Invoke();
+                onReleasedEvent?.Invoke();
                 break;
             
         }

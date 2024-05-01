@@ -3626,7 +3626,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TX Village Props - Stone of Recall - Glow
+      name: LightSgin
       rect:
         serializedVersion: 2
         x: 202
@@ -4603,6 +4603,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Launcher: 21300042
+      LightSgin: -1796461765
       TX Village Props - Anvil: 21300084
       TX Village Props - Apple: 21300178
       TX Village Props - Archert Target: 21300154
@@ -4763,7 +4764,6 @@ TextureImporter:
       TX Village Props - Stall Tent Pillar: 21300190
       TX Village Props - Statue: 21300150
       TX Village Props - Statue Bouquet: 21300152
-      TX Village Props - Stone of Recall - Glow: -1796461765
       TX Village Props - Stump: 21300062
       TX Village Props - Sunflower 01: 21300262
       TX Village Props - Sunflower 02: 21300264

@@ -10,9 +10,11 @@ public class Sign : MonoBehaviour
     IInteractable targetItem;
     bool canPress;
     GameObject target;
+    GameObject showSign;
     private void Awake()
     {
         input = new PlayerInput();
+        showSign = transform.GetChild(0).gameObject;
     }
     private void OnEnable()
     {
@@ -34,8 +36,12 @@ public class Sign : MonoBehaviour
             targetItem?.TriggerAction();
             print("Confirm");
             canPress = false;
-            if(!targetItem.RepeatInteraction())
+            if (!targetItem.RepeatInteraction())
+            {
                 target.tag = "Untagged";
+                showSign.SetActive(false);
+            }
+                
             targetItem = null;
         }
     }
@@ -52,14 +58,14 @@ public class Sign : MonoBehaviour
             canPress = true;
             targetItem = collision.gameObject.GetComponent<IInteractable>();
             target = collision.gameObject;
+            showSign.SetActive(true);
         }
-            
-         //TODO: 显示可互动的图标指示
-         
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         //TODO: 关闭可互动的图标指示
         canPress = false;
+        showSign.SetActive(false);
     }
 }

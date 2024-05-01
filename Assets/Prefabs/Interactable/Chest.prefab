@@ -148,10 +148,11 @@ MonoBehaviour:
   closed: {fileID: 21300000, guid: 12e9cb45bb9c95b4f9c89b53b7299dc5, type: 3}
   opened: {fileID: 21300000, guid: 0f5b8bd0cbefe4744a07459b9a29e6d6, type: 3}
   isOpened: 0
-  GUID: 
+  ID: 
   OnChestOpened:
     m_PersistentCalls:
       m_Calls: []
+  itemList: []
 --- !u!114 &3519071346971603330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,4 +165,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01de83794f11e4949875260b6cf742f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GUID: 76afb8d2-1160-4686-a072-49b248e922a4
+  ID: 
+  Regenerate: 0
