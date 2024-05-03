@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: My Bag
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: abe251d6fb0807e4eb41382edbb97f86, type: 2}
-  m_sharedMaterial: {fileID: -1888022844955070127, guid: abe251d6fb0807e4eb41382edbb97f86, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7803f3d87b0fe204987c73a0b25170b7, type: 2}
+  m_sharedMaterial: {fileID: 6107039289532119393, guid: 7803f3d87b0fe204987c73a0b25170b7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
