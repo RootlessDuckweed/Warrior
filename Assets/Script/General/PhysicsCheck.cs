@@ -34,10 +34,10 @@ public class PhysicsCheck : MonoBehaviour
     /// </summary>
     void Check()
     {
-        isGround = Physics2D.OverlapCircle((Vector2)transform.position + checkPointOffset_Ground * transform.localScale, checkRadius, layer);
+        isGround = Physics2D.OverlapCircle((Vector2)transform.position + checkPointOffset_Ground * transform.localScale.x, checkRadius, layer);
         isRightWall = Physics2D.OverlapCircle((Vector2)transform.position + checkPointOffset_RightWall, checkRadius, layer);
-        isLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + checkPointOffset_LeftWall, checkRadius, layer);
-        isAir = !Physics2D.OverlapCircle((Vector2)transform.position + checkPointOffset_Air, checkRadius, layer);
+        isLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + checkPointOffset_LeftWall , checkRadius, layer);
+        isAir = !Physics2D.OverlapCircle((Vector2)transform.position + checkPointOffset_Air * transform.localScale.x, checkRadius, layer);
     }
     /// <summary>
     /// »­³ö¼ì²â·¶Î§
@@ -47,6 +47,6 @@ public class PhysicsCheck : MonoBehaviour
         Gizmos.DrawWireSphere((Vector2)transform.position + checkPointOffset_Ground * transform.localScale, checkRadius);
         Gizmos.DrawWireSphere((Vector2)transform.position + checkPointOffset_LeftWall, checkRadius);
         Gizmos.DrawWireSphere((Vector2)transform.position + checkPointOffset_RightWall, checkRadius);
-        Gizmos.DrawWireSphere((Vector2)transform.position + checkPointOffset_Air, checkRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position + checkPointOffset_Air * transform.localScale, checkRadius);
     }
 }

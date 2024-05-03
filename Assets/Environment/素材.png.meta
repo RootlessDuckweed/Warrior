@@ -257,7 +257,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u7D20\u6750_7"
+      name: Stone_Small
       rect:
         serializedVersion: 2
         x: 638
@@ -278,7 +278,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u7D20\u6750_8"
+      name: Stone_Big
       rect:
         serializedVersion: 2
         x: 814
@@ -509,27 +509,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u7D20\u6750_25"
-      rect:
-        serializedVersion: 2
-        x: 381
-        y: 507
-        width: 10
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2ae7105be6731854291734fec8222de8
-      internalID: 1385302610
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: DoorFrame
       rect:
         serializedVersion: 2
@@ -588,27 +567,6 @@ TextureImporter:
       bones: []
       spriteID: b1ba5f480bb1f8645aa69aa619f9a341
       internalID: 537422687
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u7D20\u6750_29"
-      rect:
-        serializedVersion: 2
-        x: 390
-        y: 494
-        width: 10
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 399f2c8f68ef6c74f8bb9806dc309793
-      internalID: -1336626745
       vertices: []
       indices: 
       edges: []
@@ -677,7 +635,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u7D20\u6750_34"
+      name: bone_2
       rect:
         serializedVersion: 2
         x: 373
@@ -698,7 +656,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u7D20\u6750_35"
+      name: bone_head1
       rect:
         serializedVersion: 2
         x: 377
@@ -740,7 +698,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u7D20\u6750_38"
+      name: bone_head2
       rect:
         serializedVersion: 2
         x: 378
@@ -853,7 +811,7 @@ TextureImporter:
         width: 11
         height: 73
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -861,6 +819,27 @@ TextureImporter:
       bones: []
       spriteID: b459ea2e78d317a4e9c05c8db9772619
       internalID: -1163934811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bone_1
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 494
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1dea5a4981ec71409cdad632ae607a3
+      internalID: 772323064
       vertices: []
       indices: 
       edges: []
@@ -879,6 +858,12 @@ TextureImporter:
       Door: 1534544674
       DoorFrame: 627436195
       Door_bg: -1163934811
+      Stone_Big: 1911821199
+      Stone_Small: 117673376
+      bone_1: 772323064
+      bone_2: 1857562831
+      bone_head1: 487090833
+      bone_head2: -1211336794
       chain: 1106110074
       floor_1: -374407059
       floor_2: 502208899
@@ -910,10 +895,7 @@ TextureImporter:
       "\u7D20\u6750_29": -127920634
       "\u7D20\u6750_30": -342321071
       "\u7D20\u6750_33": 1091066650
-      "\u7D20\u6750_34": 537422687
-      "\u7D20\u6750_35": -1336626745
       "\u7D20\u6750_36": -996405863
-      "\u7D20\u6750_38": 1534544674
       "\u7D20\u6750_4": 1857562831
       "\u7D20\u6750_40": 487090833
       "\u7D20\u6750_42": 1607692501
@@ -921,8 +903,6 @@ TextureImporter:
       "\u7D20\u6750_45": -502255788
       "\u7D20\u6750_5": 65419936
       "\u7D20\u6750_6": 1847887600
-      "\u7D20\u6750_7": -296667084
-      "\u7D20\u6750_8": 975244517
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

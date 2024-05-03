@@ -33,15 +33,18 @@ public class Sign : MonoBehaviour
     {
         if (canPress)
         {
-            targetItem?.TriggerAction();
+            
             print("Confirm");
             canPress = false;
+
+            targetItem?.TriggerAction(); 
+
             if (!targetItem.RepeatInteraction())
             {
                 target.tag = "Untagged";
                 showSign.SetActive(false);
             }
-                
+               
             targetItem = null;
         }
     }
@@ -60,6 +63,10 @@ public class Sign : MonoBehaviour
             target = collision.gameObject;
             showSign.SetActive(true);
         }
+        else
+        {
+            targetItem = null;
+        }
 
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -67,5 +74,6 @@ public class Sign : MonoBehaviour
         //TODO: 关闭可互动的图标指示
         canPress = false;
         showSign.SetActive(false);
+        targetItem = null;
     }
 }

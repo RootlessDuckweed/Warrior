@@ -497,7 +497,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1192,7 +1192,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 6
+    OrthographicSize: 8
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -1240,6 +1240,9 @@ MonoBehaviour:
   OnLoadedScene: {fileID: 11400000, guid: 58d02efcd947af541a098b28b74a5fb7, type: 2}
   OnPlayerRespawn: {fileID: 11400000, guid: bbf8479b3cc8b7d4aacc776b807be586, type: 2}
   confiner: {fileID: 1438533139}
+  backGround: {fileID: 0}
+  BGforwardPercent: 0.6
+  BGUpPercent: 0.3
 --- !u!114 &1438533138
 MonoBehaviour:
   m_ObjectHideFlags: 0

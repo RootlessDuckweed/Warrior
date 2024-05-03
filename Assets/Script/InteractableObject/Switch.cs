@@ -67,10 +67,7 @@ public class Switch : MonoBehaviour, IInteractable
         {
             OnSwitchOpened?.Invoke();
         }
-        else
-        {
-            OnSwitchClosed?.Invoke();
-        }
+        
     }
     public string GetNeedToCovertJsonData()
     {

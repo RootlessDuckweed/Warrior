@@ -12,6 +12,7 @@ TagManager:
   - PlayerDead
   - LookPoint
   - Bound
+  - BackGround
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Interactable
   - Bullet
   - Sign
-  - 
+  - Door
   - 
   - 
   - 
