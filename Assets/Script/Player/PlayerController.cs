@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public float slideTimeDuration;
     public float slideCounter;
     public bool isSlideCold;  //ÊÇ·ñÔÚ»¬²ùÀäÈ´×´Ì¬
+    public bool isSlide;
     public float dashTimeDuration;
     public float dashTimeCounter;
     public bool isDashCold;
@@ -92,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!isHurt&&!isDash)
+        if(!isHurt&&!isDash&&!isSlide)
         Move();
     }
 
@@ -113,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        if(physicsCheck.isGround)
+        if(physicsCheck.isGround|| physicsCheck.isPlayerDead)
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
     private void Slide(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -121,11 +122,11 @@ public class PlayerController : MonoBehaviour
         if (isSlideCold) return;
         if (physicsCheck.isGround)
         {
-            playerAnimaton.TriggerSlide();
-            moveSpeed *= 1.5f;
-            slideCounter = slideTimeDuration;
+            isSlide = true;
             isSlideCold = true;
-
+            playerAnimaton.TriggerSlide();
+            rb.AddForce(transform.right * currentFace*slideForce, ForceMode2D.Impulse);
+            slideCounter = slideTimeDuration;
         }
         
     }
@@ -182,7 +183,7 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         input.GamePlay.Disable();
         gameObject.tag = "PlayerDead";
-        gameObject.layer = 3;
+        gameObject.layer = 8;
         rb.mass = 2f;
         UIManager.Instance.OpenPanel("DeadPanel");
     }
