@@ -19,7 +19,7 @@ public class SlideAnimation : StateMachineBehaviour
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.gameObject.GetComponent<PlayerController>().moveSpeed /= 1.5f;
+        animator.gameObject.GetComponent<PlayerController>().isSlide = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

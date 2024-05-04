@@ -18,7 +18,9 @@ public class PhysicsCheck : MonoBehaviour
     [Header("Check Right Wall")]
     public Vector2 checkPointOffset_RightWall; //偏移
     public bool isRightWall; // 是否靠近右边墙体
-
+    [Header("CheckPlayerDeadLayer")]
+    public LayerMask playerDeadLayer;  //检测的层级
+    public bool isPlayerDead; // 是否站在玩家死亡身体上面
     private void Awake()
     {
         
@@ -38,6 +40,7 @@ public class PhysicsCheck : MonoBehaviour
         isRightWall = Physics2D.OverlapCircle((Vector2)transform.position + checkPointOffset_RightWall, checkRadius, layer);
         isLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + checkPointOffset_LeftWall , checkRadius, layer);
         isAir = !Physics2D.OverlapCircle((Vector2)transform.position + checkPointOffset_Air * transform.localScale.x, checkRadius, layer);
+        isPlayerDead = Physics2D.OverlapCircle((Vector2)transform.position + checkPointOffset_Ground * transform.localScale.x, checkRadius, playerDeadLayer);
     }
     /// <summary>
     /// 画出检测范围

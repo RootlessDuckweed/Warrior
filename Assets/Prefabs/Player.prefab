@@ -80,7 +80,7 @@ Transform:
   m_GameObject: {fileID: 735155239511630837}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.06, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -313,12 +313,13 @@ MonoBehaviour:
   hurtForce: 3
   moveSpeed: 200
   currentFace: 0
-  jumpForce: 16.5
-  slideForce: 5
+  jumpForce: 14
+  slideForce: 12
   dashForce: 10
   slideTimeDuration: 1
   slideCounter: 0
   isSlideCold: 0
+  isSlide: 0
   dashTimeDuration: 3
   dashTimeCounter: 0
   isDashCold: 0
@@ -425,6 +426,10 @@ MonoBehaviour:
   isLeftWall: 0
   checkPointOffset_RightWall: {x: 0.46, y: 1.13}
   isRightWall: 0
+  playerDeadLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  isPlayerDead: 0
 --- !u!1 &5531336042858580759
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +765,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.074433625, y: 0.57355666}
+  m_Offset: {x: -0.07443333, y: 0.5109731}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -771,7 +776,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2790998, y: 1.0001616}
+  m_Size: {x: 0.80624676, y: 0.8193648}
   m_EdgeRadius: 0
 --- !u!1 &7320958537716031588
 GameObject:
