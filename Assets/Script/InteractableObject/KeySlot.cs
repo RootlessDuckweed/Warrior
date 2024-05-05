@@ -22,14 +22,14 @@ public class KeySlot : MonoBehaviour,IInteractable
 
     public void TriggerAction()
     {
-        
-            
+         
         if (InventoryManager.Instance.inventorySO.propsPakage.ContainsKey(needKey.propName))
         {
             isOpened = true;
             InventoryManager.Instance.RemoveProp(needKey);
             OnKeySlotOpened?.Invoke();
             canRepeat = false;
+            AudioManager.Instance.PlayFX(AudioPathGlobals.OpenChest, 0.2f);
         }
         
     }
