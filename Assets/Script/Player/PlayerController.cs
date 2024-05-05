@@ -46,7 +46,8 @@ public class PlayerController : MonoBehaviour
     public bool isDead;
     public bool isDash;
     public bool isClimb;    //Bocchi:是否处于攀爬状态
-    private float orginalGravity;
+    public bool isFalling;  //Bocchi:检测是否处于掉落状态
+    private float orginalGravity;   //Bocchi:保存初始的重力加速度
 
     public GameObject critical;
     private void Awake()
@@ -109,6 +110,10 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        if (physicsCheck.isGround)
+        {
+            isFalling = false;
+        }
         //转向
         currentFace = transform.localScale.x;
         if (inputDirection.x > 0) currentFace = 1;
@@ -124,8 +129,17 @@ public class PlayerController : MonoBehaviour
 
     private void Jump(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        if(physicsCheck.isGround|| physicsCheck.isPlayerDead)
-        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        if(physicsCheck.isGround||isClimb|| physicsCheck.isPlayerDead)
+        {
+            rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            if (isClimb) 
+            { 
+                isFalling = true;
+                isClimb = false;            
+            }
+            rb.gravityScale = orginalGravity; 
+        }
+
     }
     private void Slide(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
@@ -231,8 +245,11 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Ladder"))
         {
-            rb.gravityScale = 0;
-            isClimb = true;
+            if (!isFalling)
+            {
+                rb.gravityScale = 0;
+                isClimb = true;
+            }
         }
     }
 
@@ -242,6 +259,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = orginalGravity;
             isClimb = false;
+            isFalling = false;
         }
     }
 

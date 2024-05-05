@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEditor.XR;
@@ -36,6 +37,7 @@ public class Enemy : MonoBehaviour
     public float stoppingDistance;//Bocchi:与玩家的停止移动的距离
     [Header("敌人使用技能的概率")]
     public float skillRate;//Bocchi:敌人使用技能的概率
+    public List<Pair<PropSO, int>> itemList;    //Bocchi:敌人掉落的物品
 
     private void Awake()
     {
@@ -183,5 +185,17 @@ public class Enemy : MonoBehaviour
         isDead = true;
         moveable = false;
         anim.SetTrigger("Death");
+        AddItemToInventory();
+    }
+
+    public void AddItemToInventory()
+    {
+        foreach (var item in itemList)
+        {
+            InventoryManager.Instance.AddProp(item.key, item.value);
+        }
+
+        UIManager.Instance.OpenPanel("ItemDescriptionPanel");
+        UIManager.Instance.panelDict["ItemDescriptionPanel"].GetComponent<ItemDescriptonPanel>().GeneratePanel(itemList);
     }
 }

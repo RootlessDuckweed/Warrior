@@ -62,7 +62,7 @@ public class ChaseState:BaseState
             }
             currentEnemy.transform.localScale = new Vector3(currentEnemy.currentFace, currentEnemy.transform.localScale.y, 
                                                             currentEnemy.transform.localScale.z);
-            currentEnemy.rb.velocity = new Vector2(currentEnemy.currentFace * Time.deltaTime * currentEnemy.chaseSpeed, 0);
+            currentEnemy.rb.velocity = new Vector2(currentEnemy.currentFace * Time.deltaTime * currentEnemy.chaseSpeed, currentEnemy.transform.position.y);
         }
     }
 
