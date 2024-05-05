@@ -24,7 +24,7 @@ public class PlayerCameraController : MonoBehaviour
     }
     private void Start()
     {
-        lastCameraPos = transform.position;
+        lastCameraPos = Camera.main.transform.position;
     }
     private void OnEnable()
     {
@@ -36,11 +36,11 @@ public class PlayerCameraController : MonoBehaviour
 
     private void Update()
     {
-        float deltaX = transform.position.x - lastCameraPos.x;
-        float deltaY = transform.position.y - lastCameraPos.y;
+        float deltaX = Camera.main.transform.position.x - lastCameraPos.x;
+        float deltaY = Camera.main.transform.position.y - lastCameraPos.y;
         if (backGround!=null)
             backGround.transform.position = backGround.transform.position + new Vector3(deltaX*BGforwardPercent, deltaY * BGUpPercent);
-        lastCameraPos = transform.position;
+        lastCameraPos = Camera.main.transform.position;
     }
 
     private void OnDisable()
