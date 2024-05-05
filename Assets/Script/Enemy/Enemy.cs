@@ -190,12 +190,15 @@ public class Enemy : MonoBehaviour
 
     public void AddItemToInventory()
     {
-        foreach (var item in itemList)
+        if (itemList.Count > 0)
         {
-            InventoryManager.Instance.AddProp(item.key, item.value);
-        }
+            foreach (var item in itemList)
+            {
+                InventoryManager.Instance.AddProp(item.key, item.value);
+            }
 
-        UIManager.Instance.OpenPanel("ItemDescriptionPanel");
-        UIManager.Instance.panelDict["ItemDescriptionPanel"].GetComponent<ItemDescriptonPanel>().GeneratePanel(itemList);
+            UIManager.Instance.OpenPanel("ItemDescriptionPanel");
+            UIManager.Instance.panelDict["ItemDescriptionPanel"].GetComponent<ItemDescriptonPanel>().GeneratePanel(itemList);
+        }
     }
 }
