@@ -21,6 +21,7 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
     private bool isLoadSavePoint;
 
     [Header("Event")]
+    public StartToLoadSceneEventSO startToLoadSceneEvent;
     public LoadedSceneEventSO loadedSceneEvent;
     public FadeSO FadeEvent;
     public float fadeDuration;
@@ -36,15 +37,17 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
     {
         UIManager.Instance.OpenPanel("MenuPanel");
     }
-
+    
     // 新的游戏
     public void NewGame()
     {
         //TODO:Fade in
         nextSceneSO = FristSceneSO;
+        startToLoadSceneEvent.RaisedEvent();
         StartToLoad(nextSceneSO);
-        UIManager.Instance.ClosePanel("MenuPanel");   
+        UIManager.Instance.ClosePanel("MenuPanel");
     }
+   
 
     // 菜单的继续
     public void ContinueGame()
@@ -53,6 +56,7 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
             return;
         if (currentSceneSO == null)
         {
+            startToLoadSceneEvent.RaisedEvent();
             isLoadSavePoint = true;
             var newScene = ScriptableObject.CreateInstance<GameSceneSO>();
             JsonUtility.FromJsonOverwrite(ReadSaveScenePoint(), newScene);
