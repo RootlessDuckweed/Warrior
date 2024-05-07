@@ -102,4 +102,10 @@ public class InventoryManager : Singleton<InventoryManager>
         inventorySO.propsPakage.Clear();
         File.Delete(resultPath);
     }
+
+    //Bocchi:清空字典集但不清空Json
+    public void ClearInventory()
+    {
+        inventorySO.propsPakage.Clear();
+    }
 }

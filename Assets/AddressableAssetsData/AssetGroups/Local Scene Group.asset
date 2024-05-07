@@ -40,6 +40,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - SceneFrist
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70e8658a61e61174f9d2c0c9b7a7cd0e
+    m_Address: Demo2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a66ff4d257f0f204f80df5c44ba7803f, type: 2}
   m_SchemaSet:

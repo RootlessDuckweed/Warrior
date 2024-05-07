@@ -19,7 +19,7 @@ public class TransitionPoint : MonoBehaviour, IInteractable
     public void TriggerAction()
     {
         anim.SetBool("isConvey", true);
-        
+        InventoryManager.Instance.ClearInventory();
     }
 
     #region Unity Animation Event
