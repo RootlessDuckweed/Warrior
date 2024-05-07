@@ -216,7 +216,7 @@ public class PlayerController : MonoBehaviour
         input.GamePlay.Disable();
         gameObject.tag = "PlayerDead";
         gameObject.layer = 8;
-        rb.mass = 2f;
+        rb.mass = 1f;
         UIManager.Instance.OpenPanel("DeadPanel");
     }
 

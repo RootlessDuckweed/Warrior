@@ -1,8 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Cinemachine;
+using Newtonsoft.Json;
+using System.Collections;
+using System.IO;
+using UnityEngine;
 
 public class PlayerCameraController : MonoBehaviour
 {
@@ -17,6 +17,11 @@ public class PlayerCameraController : MonoBehaviour
     public float BGforwardPercent;
     public float BGUpPercent;
     private Vector3 lastCameraPos;
+
+    private bool canBGFollow;
+
+    private static Vector3 bg_Pos;
+    private static bool isNeedRead_bg_Pos;
     private void Awake()
     {
         playerCamera = GetComponent<CinemachineVirtualCamera>();
@@ -24,7 +29,7 @@ public class PlayerCameraController : MonoBehaviour
     }
     private void Start()
     {
-        lastCameraPos = Camera.main.transform.position;
+        //lastCameraPos = Camera.main.transform.position;
     }
     private void OnEnable()
     {
@@ -36,11 +41,20 @@ public class PlayerCameraController : MonoBehaviour
 
     private void Update()
     {
-        float deltaX = Camera.main.transform.position.x - lastCameraPos.x;
-        float deltaY = Camera.main.transform.position.y - lastCameraPos.y;
-        if (backGround!=null)
-            backGround.transform.position = backGround.transform.position + new Vector3(deltaX*BGforwardPercent, deltaY * BGUpPercent);
-        lastCameraPos = Camera.main.transform.position;
+        if (canBGFollow)
+        {
+            //摄像机稳定后再做跟随
+            float deltaX = Camera.main.transform.position.x - lastCameraPos.x;
+            float deltaY = Camera.main.transform.position.y - lastCameraPos.y;
+            if (backGround != null)
+            {
+                backGround.transform.position = backGround.transform.position + new Vector3(deltaX*BGforwardPercent, deltaY * BGUpPercent);
+                bg_Pos = backGround.transform.position;
+            }
+                        
+            lastCameraPos = Camera.main.transform.position;
+        }
+        
     }
 
     private void OnDisable()
@@ -58,6 +72,7 @@ public class PlayerCameraController : MonoBehaviour
     //获取场景的边界 创建Bound
     private void GetNewBound()
     {
+        canBGFollow = false;
         var bound = GameObject.FindGameObjectWithTag("Bound"); //寻找Bound标签对象
         if (bound != null )
         {
@@ -72,6 +87,48 @@ public class PlayerCameraController : MonoBehaviour
         if (bg != null)
         {
             backGround = bg;
+            if (isNeedRead_bg_Pos) //如果需要读取保存的背景点位
+            {
+                backGround.transform.position = bg_Pos;
+                isNeedRead_bg_Pos = false;
+            }
+            else //不需要的话，就用背景的初始坐标初始化bg_Pos
+            {
+                bg_Pos = backGround.transform.position;
+            }
+
+        }
+        StartCoroutine(WaitForCameraToStabilize()); // 等待摄像机稳定
+    }
+
+    // 等待摄像机稳定
+    IEnumerator WaitForCameraToStabilize()
+    {
+        yield return new WaitForSeconds(1);
+        // 摄像机稳定后的操作
+        canBGFollow = true;
+        lastCameraPos = Camera.main.transform.position;
+    }
+  // 保存当前场景的背景点位
+    public static void SaveBackGroundPoisition()
+    {
+        string saveJson = JsonUtility.ToJson(bg_Pos);
+        //print(saveJson);
+        if (!Directory.Exists(Application.streamingAssetsPath))
+        {
+            Directory.CreateDirectory(Application.streamingAssetsPath);
+        }
+        File.WriteAllText(Application.streamingAssetsPath + "/saveLastGame_Bg_Pos_Json.json", saveJson);
+    }
+   //读取保存的当前场景点位
+    public static void ReadBackGroundPoisition()
+    {
+        if(File.Exists(Application.streamingAssetsPath + "/saveLastGame_Bg_Pos_Json.json"))
+        {
+            string readData = File.ReadAllText(Application.streamingAssetsPath + "/saveLastGame_Bg_Pos_Json.json");
+            Vector3 pos = JsonUtility.FromJson<Vector3>(readData);
+            bg_Pos = pos;
+            isNeedRead_bg_Pos = true;
         }
     }
 }

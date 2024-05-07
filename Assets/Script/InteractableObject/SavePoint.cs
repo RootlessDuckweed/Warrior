@@ -48,7 +48,10 @@ public class SavePoint : MonoBehaviour, IInteractable
         }
         currentSavePoint = this;*/
         SceneLoaderManager.Instance.SaveScenePoint(transform.position);
+        //保存可互动对象的状态
         SaveInteractableObserver.SaveInteractableToJson();
+        //保存当前场景背景的位置
+        PlayerCameraController.SaveBackGroundPoisition();
         //Bocchi:调用保存背包数据的方法
         InventoryManager.Instance.SaveInventoryData();
     }

@@ -49,7 +49,9 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
     // 菜单的继续
     public void ContinueGame()
     {
-        if(currentSceneSO == null)
+        if (!File.Exists(Application.streamingAssetsPath + "/saveSceneJson.json"))
+            return;
+        if (currentSceneSO == null)
         {
             isLoadSavePoint = true;
             var newScene = ScriptableObject.CreateInstance<GameSceneSO>();
@@ -78,13 +80,15 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
         if (isLoadSavePoint)
         {
             playerTrans.position = currentSceneSO.positionToGo;
+            //读取已经保存的可互动对象的状态
             SaveInteractableObserver.LoadInteractableObj();
+            //读取已经保存的背景
+            PlayerCameraController.ReadBackGroundPoisition();
             isLoadSavePoint = false;
         }
-        
-        SaveScenePoint(playerTrans.position);
-        
-        loadedSceneEvent.RaisedEvent();
+
+        loadedSceneEvent.RaisedEvent(); //先完成场景加载之后的事件
+        SaveScenePoint(playerTrans.position); //再保存场景点位
     }
 
     // 加载下一关的逻辑 包括卸载当前场景
@@ -95,7 +99,7 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
 
         if (currentSceneSO != null)
         {
-          yield return  currentSceneSO.sceneReference.UnLoadScene(); //卸载当前关卡
+            yield return  currentSceneSO.sceneReference.UnLoadScene(); //卸载当前关卡
         }
         LoadNextScene(nextSceneSO); //开始加载下一关
         
@@ -112,12 +116,16 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
     {
         saveSceneSO = currentSceneSO;
         saveSceneSO.positionToGo = position;
+        
         string saveJson = JsonUtility.ToJson(saveSceneSO);
         if (!Directory.Exists(Application.streamingAssetsPath))
         {
             Directory.CreateDirectory(Application.streamingAssetsPath);
         }
         File.WriteAllText(Application.streamingAssetsPath+"/saveSceneJson.json",saveJson);
+        // 保存当前场景的背景位置
+        PlayerCameraController.SaveBackGroundPoisition();
+
     }
 
     private string ReadSaveScenePoint()
