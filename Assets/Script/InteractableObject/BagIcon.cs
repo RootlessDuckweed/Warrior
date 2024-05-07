@@ -35,6 +35,7 @@ public class BagIcon : MonoBehaviour
         else
         {
             UIManager.Instance.ClosePanel("InventoryPanel");
+            
             Time.timeScale = 1;
         }
         isOpened = !isOpened;
