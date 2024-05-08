@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Slide(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        if (isSlideCold) return;
+        if (isSlideCold||isAttack) return;
         if (physicsCheck.isGround)
         {
             isSlide = true;

@@ -17,8 +17,18 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: e8c5832853820974fb31971911e3db4a
   m_SerializeEntries:
-  - m_GUID: 56bc1db342f8d174fb18a45daa74e495
-    m_Address: Assets/TileMap
+  - m_GUID: 0eb2342faad192645bfc21c1d62dbdfe
+    m_Address: Assets/TileMap/AnimationTile/Poison_1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f7764d5cf81001d4fbb7b481f16c4579
+    m_Address: Assets/TileMap/AnimationTile/Poison_2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fd4318d4275a584bb4f9b17dc7a3c9b
+    m_Address: Assets/TileMap/AnimationTile/Poison_3.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

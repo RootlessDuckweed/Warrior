@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Events;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
@@ -11,12 +12,20 @@ public class DeadPanel : BasePanel
     public GameObject PlayerPrefab;
     [Header("Event")]
     public PlayerRespawnEventSO playerRespawnEvent;
+    //public UnityAction OnRespawnEvent;
     protected override void Awake()
     {
         RetryBtn = transform.Find("RetryButton").GetComponent<Button>();
         RetryBtn.onClick.AddListener(StartToRetry);
     }
-
+    private void OnEnable()
+    {
+        playerRespawnEvent.OnPlayerDeadEvent.AddListener(LookAtPlayer);
+    }
+    private void OnDisable()
+    {
+        playerRespawnEvent.OnPlayerDeadEvent.RemoveListener(LookAtPlayer);
+    }
     void StartToRetry()
     {
         StartCoroutine(GeneratePlayer());
@@ -35,8 +44,14 @@ public class DeadPanel : BasePanel
             else
                 Instantiate(player);
             playerRespawnEvent.RaisedEvent();
+            //PlayerCameraController.Instance.LookAtPlayer();
         }
         UIManager.Instance.ClosePanel("DeadPanel");
+    }
+   
+    void LookAtPlayer()
+    {
+        PlayerCameraController.Instance.LookAtPlayer();
     }
 
 }

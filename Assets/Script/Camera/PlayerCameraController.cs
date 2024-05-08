@@ -4,7 +4,7 @@ using System.Collections;
 using System.IO;
 using UnityEngine;
 
-public class PlayerCameraController : MonoBehaviour
+public class PlayerCameraController : Singleton<PlayerCameraController>
 {
     [Header("¼àÌý")]
     public LoadedSceneEventSO OnLoadedScene;
@@ -24,6 +24,7 @@ public class PlayerCameraController : MonoBehaviour
     private static bool isNeedRead_bg_Pos;
     private void Awake()
     {
+        base.Awake();
         playerCamera = GetComponent<CinemachineVirtualCamera>();
         confiner = GetComponent<CinemachineConfiner2D>();
     }
@@ -36,7 +37,7 @@ public class PlayerCameraController : MonoBehaviour
         OnLoadedScene.OnLoadedSceneEvent.AddListener(LookAtPlayer);
         OnLoadedScene.OnLoadedSceneEvent.AddListener(GetNewBound);
         OnLoadedScene.OnLoadedSceneEvent.AddListener(GetNewBackGround);
-        OnPlayerRespawn.OnPlayerDeadEvent.AddListener(LookAtPlayer);
+        //OnPlayerRespawn.OnPlayerDeadEvent.AddListener(LookAtPlayer);
     }
 
     private void Update()
@@ -62,9 +63,9 @@ public class PlayerCameraController : MonoBehaviour
         OnLoadedScene.OnLoadedSceneEvent.RemoveListener(LookAtPlayer);
         OnLoadedScene.OnLoadedSceneEvent.RemoveListener(GetNewBound);
         OnLoadedScene.OnLoadedSceneEvent.RemoveListener(GetNewBackGround);
-        OnPlayerRespawn.OnPlayerDeadEvent.RemoveListener(LookAtPlayer);
+        //OnPlayerRespawn.OnPlayerDeadEvent.RemoveListener(LookAtPlayer);
     }
-    private void LookAtPlayer()
+    public void LookAtPlayer()
     {
          playerCamera.Follow =  playerCamera.LookAt = GameObject.FindWithTag("LookPoint").transform;
     }
@@ -131,4 +132,5 @@ public class PlayerCameraController : MonoBehaviour
             isNeedRead_bg_Pos = true;
         }
     }
+    
 }
