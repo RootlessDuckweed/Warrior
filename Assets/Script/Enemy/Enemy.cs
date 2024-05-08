@@ -1,11 +1,8 @@
-using JetBrains.Annotations;
-using System;
+
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Tilemaps;
-using UnityEditor.XR;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class Enemy : MonoBehaviour
 {

@@ -77,10 +77,12 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
     //加载完成后
     private void OnLoadCompleted(AsyncOperationHandle<SceneInstance> obj)
     {
+        if (obj.Result.Scene.name != "GameOver")
+        {
         SceneManager.SetActiveScene(obj.Result.Scene);
         FadeEvent.RaisedEvent(fadeDuration, false);
         currentSceneSO = nextSceneSO;
-        playerTrans = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerTrans = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Transform>();
         if (isLoadSavePoint)
         {
             playerTrans.position = currentSceneSO.positionToGo;
@@ -93,6 +95,8 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
 
         loadedSceneEvent.RaisedEvent(); //先完成场景加载之后的事件
         SaveScenePoint(playerTrans.position); //再保存场景点位
+        }
+       
     }
 
     // 加载下一关的逻辑 包括卸载当前场景

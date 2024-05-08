@@ -22,7 +22,7 @@ public class InventoryPanel : BasePanel
         base.OnPause();
     }
 
-    void OnCloseButtonClicked()
+    public void OnCloseButtonClicked()
     {
         OnContinue();
     }

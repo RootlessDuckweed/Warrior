@@ -17,22 +17,15 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 7ef647fb067d75745b07181b9d255b3a
   m_SerializeEntries:
-  - m_GUID: aac2e98bfd0da9e43aababaa247a2579
-    m_Address: SampleScene 1
+  - m_GUID: 2d7e2a5d024fbad408435228093bcb00
+    m_Address: Assets/Scenes/UIScene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8c9cfa26abfee488c85f1582747f6a02
-    m_Address: SampleScene
+    m_Address: Assets/Scenes/GameOver.unity
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - SceneSecond
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2d7e2a5d024fbad408435228093bcb00
-    m_Address: UIScene
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - SceneUI
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9eccda80ff1c0924c9e26750ffd1c724
     m_Address: Demo1

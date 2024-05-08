@@ -35,7 +35,7 @@ public class BagIcon : MonoBehaviour
         else
         {
             UIManager.Instance.ClosePanel("InventoryPanel");
-            
+            GameObject.FindGameObjectWithTag("Player")?.gameObject.GetComponent<PlayerController>().input.Enable();
             Time.timeScale = 1;
         }
         isOpened = !isOpened;

@@ -12,16 +12,16 @@ public class MenuPanel : BasePanel
     protected override void Awake()
     {
         base.Awake();
-        newGameBtn = transform.Find("NewGameButton").GetComponent<Button>();
-        continueBtn = transform.Find("ContinueButton").GetComponent<Button>();
+        newGameBtn = transform.Find("NewGameButton")?.GetComponent<Button>();
+        continueBtn = transform.Find("ContinueButton")?.GetComponent<Button>();
         quitBtn = transform.Find("QuitButton").GetComponent<Button>();
 
         //RootlessDuckweed : 添加事件监听
-        newGameBtn.onClick.AddListener(SceneLoaderManager.Instance.NewGame);
-        newGameBtn.onClick.AddListener(InventoryManager.Instance.ClearInventoryData);
-        continueBtn.onClick.AddListener(SceneLoaderManager.Instance.ContinueGame);
+        newGameBtn?.onClick.AddListener(SceneLoaderManager.Instance.NewGame);
+        newGameBtn?.onClick.AddListener(InventoryManager.Instance.ClearInventoryData);
+        continueBtn?.onClick.AddListener(SceneLoaderManager.Instance.ContinueGame);
         //Bocchi:添加加载何保存背包数据的事件监听
-        continueBtn.onClick.AddListener(InventoryManager.Instance.LoadInventoryData);
+        continueBtn?.onClick.AddListener(InventoryManager.Instance.LoadInventoryData);
         quitBtn.onClick.AddListener(OnQuit);
     }
 
@@ -33,8 +33,8 @@ public class MenuPanel : BasePanel
     private void OnDisable()
     {
         OnContinue();
-        newGameBtn.onClick.RemoveAllListeners();
-        continueBtn.onClick.RemoveAllListeners();
+        newGameBtn?.onClick.RemoveAllListeners();
+        continueBtn?.onClick.RemoveAllListeners();
         quitBtn.onClick.RemoveAllListeners();
     }
 
