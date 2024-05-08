@@ -18,14 +18,6 @@ public class DeadPanel : BasePanel
         RetryBtn = transform.Find("RetryButton").GetComponent<Button>();
         RetryBtn.onClick.AddListener(StartToRetry);
     }
-    private void OnEnable()
-    {
-        playerRespawnEvent.OnPlayerDeadEvent.AddListener(LookAtPlayer);
-    }
-    private void OnDisable()
-    {
-        playerRespawnEvent.OnPlayerDeadEvent.RemoveListener(LookAtPlayer);
-    }
     void StartToRetry()
     {
         StartCoroutine(GeneratePlayer());
@@ -44,7 +36,7 @@ public class DeadPanel : BasePanel
             else
                 Instantiate(player);
             playerRespawnEvent.RaisedEvent();
-            //PlayerCameraController.Instance.LookAtPlayer();
+            PlayerCameraController.Instance.LookAtPlayer();
         }
         UIManager.Instance.ClosePanel("DeadPanel");
     }

@@ -37,7 +37,7 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         OnLoadedScene.OnLoadedSceneEvent.AddListener(LookAtPlayer);
         OnLoadedScene.OnLoadedSceneEvent.AddListener(GetNewBound);
         OnLoadedScene.OnLoadedSceneEvent.AddListener(GetNewBackGround);
-        //OnPlayerRespawn.OnPlayerDeadEvent.AddListener(LookAtPlayer);
+        OnPlayerRespawn.OnPlayerDeadEvent.AddListener(LookAtPlayer);
     }
 
     private void Update()
@@ -63,7 +63,7 @@ public class PlayerCameraController : Singleton<PlayerCameraController>
         OnLoadedScene.OnLoadedSceneEvent.RemoveListener(LookAtPlayer);
         OnLoadedScene.OnLoadedSceneEvent.RemoveListener(GetNewBound);
         OnLoadedScene.OnLoadedSceneEvent.RemoveListener(GetNewBackGround);
-        //OnPlayerRespawn.OnPlayerDeadEvent.RemoveListener(LookAtPlayer);
+        OnPlayerRespawn.OnPlayerDeadEvent.RemoveListener(LookAtPlayer);
     }
     public void LookAtPlayer()
     {

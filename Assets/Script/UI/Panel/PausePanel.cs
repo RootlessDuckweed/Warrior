@@ -7,11 +7,13 @@ public class PausePanel : BasePanel
 {
     Button continueBtn;
     Button backToMenuBtn;
+    [SerializeField]Button RemakeBtn;
     protected override void Awake()
     {
         base.Awake();
         continueBtn=GameObject.Find("ContinueButton").GetComponent<Button>();
         backToMenuBtn=GameObject.Find("BackToMenuButton").GetComponent<Button>();
+        RemakeBtn = transform.Find("Remake").GetComponent<Button>();
     }
     private void OnEnable()
     {
@@ -19,12 +21,14 @@ public class PausePanel : BasePanel
         OnPause();
         continueBtn.onClick.AddListener(OnContinue);
         backToMenuBtn.onClick.AddListener(OnBackToMenu);
+        RemakeBtn.onClick.AddListener(Remake);
     }
 
     private void OnDisable()
     {
         continueBtn.onClick.RemoveAllListeners();
         backToMenuBtn.onClick.RemoveAllListeners();
+        RemakeBtn.onClick.RemoveAllListeners();
     }
     protected override void OnContinue()
     {
@@ -38,4 +42,10 @@ public class PausePanel : BasePanel
         InventoryManager.Instance.SaveInventoryData();
         UIManager.Instance.OpenPanel("MenuPanel");
     }    
+
+    private void Remake()
+    {
+        OnContinue();
+        SceneLoaderManager.Instance.ReLoadThisScene();
+    }
 }

@@ -26,6 +26,8 @@ public static class SaveInteractableObserver
     //从json文件中读取可互动对象的数据
     public static void LoadInteractableObj()
     {
+        if (!File.Exists(Application.streamingAssetsPath + "/saveInteractableJson.json"))
+            return;
         string json = File.ReadAllText(Application.streamingAssetsPath + "/saveInteractableJson.json"); //读取json文件
         //Debug.Log(json);    
         loadFromJson=JsonConvert.DeserializeObject<Dictionary<string, string>>(json); //反序列化

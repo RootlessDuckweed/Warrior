@@ -66,6 +66,13 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
         UIManager.Instance.ClosePanel("MenuPanel");
     }
 
+    public void ReLoadThisScene()
+    {
+        //Time.timeScale = 1;
+        if(currentSceneSO!=null)
+            StartToLoad(currentSceneSO);
+    }
+
     //开始 读取下一关
     private void LoadNextScene(GameSceneSO next)
     {
@@ -103,7 +110,7 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
     IEnumerator LoadScene(float dura,bool isFadeIn)
     {
         FadeEvent.RaisedEvent(fadeDuration, isFadeIn);
-        yield return new WaitForSeconds(dura);
+        yield return new WaitForSecondsRealtime(fadeDuration);
 
         if (currentSceneSO != null)
         {
