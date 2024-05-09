@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using Script.Observer;
 using UnityEngine;
 
 public class SavePoint : MonoBehaviour, IInteractable
@@ -50,6 +51,8 @@ public class SavePoint : MonoBehaviour, IInteractable
         SceneLoaderManager.Instance.SaveScenePoint(transform.position);
         //保存可互动对象的状态
         SaveInteractableObserver.SaveInteractableToJson();
+        //保存尸体位置
+        SavePlayerDeadObserver.SerializePlayerDeadPos();
         //保存当前场景背景的位置
         PlayerCameraController.SaveBackGroundPoisition();
         //Bocchi:调用保存背包数据的方法

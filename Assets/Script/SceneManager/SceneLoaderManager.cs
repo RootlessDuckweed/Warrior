@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Script.Observer;
 using Unity.XR.OpenVR;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -45,6 +46,7 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
         nextSceneSO = FristSceneSO;
         startToLoadSceneEvent.RaisedEvent();
         StartToLoad(nextSceneSO);
+        SavePlayerDeadObserver.RemoveAll();
         UIManager.Instance.ClosePanel("MenuPanel");
     }
    
@@ -86,22 +88,26 @@ public class SceneLoaderManager : Singleton<SceneLoaderManager>
     {
         if (obj.Result.Scene.name != "GameOver")
         {
-        SceneManager.SetActiveScene(obj.Result.Scene);
-        FadeEvent.RaisedEvent(fadeDuration, false);
-        currentSceneSO = nextSceneSO;
-        playerTrans = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Transform>();
-        if (isLoadSavePoint)
-        {
-            playerTrans.position = currentSceneSO.positionToGo;
-            //读取已经保存的可互动对象的状态
-            SaveInteractableObserver.LoadInteractableObj();
-            //读取已经保存的背景
-            PlayerCameraController.ReadBackGroundPoisition();
-            isLoadSavePoint = false;
-        }
+            SceneManager.SetActiveScene(obj.Result.Scene);
+            FadeEvent.RaisedEvent(fadeDuration, false); 
+            currentSceneSO = nextSceneSO;
+            playerTrans = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Transform>();
+            if (isLoadSavePoint)
+            {
+                playerTrans.position = currentSceneSO.positionToGo;
+                //反序列化保存的角色死亡位置
+                SavePlayerDeadObserver.DeserializePlayerDeadPos();
+                //生成角色死亡的遗体到反序列出来的位置
+                SavePlayerDeadObserver.InstantiateSavedPlayerDeadInMap();
+                //读取已经保存的可互动对象的状态
+                SaveInteractableObserver.LoadInteractableObj();
+                //读取已经保存的背景
+                PlayerCameraController.ReadBackGroundPoisition();
+                isLoadSavePoint = false;
+            }
 
-        loadedSceneEvent.RaisedEvent(); //先完成场景加载之后的事件
-        SaveScenePoint(playerTrans.position); //再保存场景点位
+            loadedSceneEvent.RaisedEvent(); //先完成场景加载之后的事件
+            SaveScenePoint(playerTrans.position); //再保存场景点位
         }
        
     }

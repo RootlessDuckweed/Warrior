@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Security.Cryptography;
+using Script.Observer;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -217,6 +218,7 @@ public class PlayerController : MonoBehaviour
         gameObject.tag = "PlayerDead";
         gameObject.layer = 8;
         rb.mass = 1f;
+        SavePlayerDeadObserver.AddPlayerDeadPos(transform.position);
         UIManager.Instance.OpenPanel("DeadPanel");
     }
 

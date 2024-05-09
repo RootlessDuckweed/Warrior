@@ -36,7 +36,7 @@ public class DeadPanel : BasePanel
             else
                 Instantiate(player);
             playerRespawnEvent.RaisedEvent();
-            PlayerCameraController.Instance.LookAtPlayer();
+            //PlayerCameraController.Instance.LookAtPlayer();
         }
         UIManager.Instance.ClosePanel("DeadPanel");
     }

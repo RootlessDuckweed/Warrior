@@ -15,13 +15,14 @@ public class PoisonDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     { 
-        other.gameObject.GetComponent<Character>()?.TakeDamage(attack);
-        if (other.gameObject.CompareTag("PlayerDead"))
-        {
-            Vector3 playerPos = other.transform.position;
-            other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            other.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            other.gameObject.transform.position= new Vector3(playerPos.x,deadPoint.y,0);
-        }        
+       if(!other.gameObject.GetComponent<PlayerController>().isDead) 
+           other.gameObject.GetComponent<Character>()?.TakeDamage(attack);
+       if (other.gameObject.CompareTag("PlayerDead"))
+       {
+           Vector3 playerPos = other.transform.position;
+           other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+           other.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+           other.gameObject.transform.position= new Vector3(playerPos.x,deadPoint.y,0);
+       }        
     }
 }
