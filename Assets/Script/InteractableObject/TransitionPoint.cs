@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Script.Observer;
 using UnityEngine;
 
 public class TransitionPoint : MonoBehaviour, IInteractable
@@ -20,6 +21,7 @@ public class TransitionPoint : MonoBehaviour, IInteractable
     {
         anim.SetBool("isConvey", true);
         InventoryManager.Instance.ClearInventory();
+        SavePlayerDeadObserver.RemoveAll();
     }
 
     #region Unity Animation Event
