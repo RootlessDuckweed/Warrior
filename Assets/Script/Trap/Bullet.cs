@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,11 +17,16 @@ public class Bullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
- 
+    
     private void FixedUpdate()
     {
         rb.velocity= dir *speed* Time.deltaTime;
         transform.localEulerAngles = new Vector3(0, 0, Time.deltaTime*500 + transform.localEulerAngles.z);
+    }
+
+    private void Update()
+    {
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -88,13 +94,17 @@ public class Bullet : MonoBehaviour
 
             case "PlayerDead":
                 //TODO: ×ª»»·½Ïò
-                if (rb.velocity.y != 0f)
+                if (rb.velocity.y < 0f)
                 {
-                    dir = new Vector2(dir.x, -dir.y);
+                    dir = new Vector2(dir.x, 1);
+                }
+                else if(rb.velocity.y > 0f)
+                {
+                    dir = new Vector2(dir.x, -1);
                 }
                 else
                 {
-                    dir = -dir;
+                    dir =  new Vector2(-dir.x, 0);
                 }
                 break;
 

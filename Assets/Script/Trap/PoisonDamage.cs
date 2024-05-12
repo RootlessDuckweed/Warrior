@@ -15,7 +15,7 @@ public class PoisonDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     { 
-       if(!other.gameObject.GetComponent<PlayerController>().isDead) 
+       if(other.gameObject.GetComponent<PlayerController>()!=null&&!other.gameObject.GetComponent<PlayerController>().isDead) 
            other.gameObject.GetComponent<Character>()?.TakeDamage(attack);
        if (other.gameObject.CompareTag("PlayerDead"))
        {
